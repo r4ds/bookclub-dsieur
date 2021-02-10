@@ -12,7 +12,9 @@ If you would like to present, please add your name next to a chapter using the [
 
 *Cohort 1: (starts 2021-02-10) - Wednesdays, 5pm EST/EDT*
 
-- 2021-02-10: Chapter X: TITLE: Presenter
+- 2021-02-10: Chapters 1-2: Introduction and How to Use this Book: Isabella Velásquez and Ryan Woodbury
+- 2021-02-17: Chapter 3: What does Data Science in Education Look Like?: Presenter(s)
+- 2021-02-24: Chapter XX: TITLE: Presenter(s)
 
 ## How to Present
 
