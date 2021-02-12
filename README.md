@@ -21,7 +21,7 @@ If you would like to present, please add your name next to a chapter using the [
 - 2021-03-24: Chapter 08. Walkthrough 2: Approaching Gradebook Data From a Data Science Perspective: Presenter(s)
 - 2021-03-31: Chapter 09. Walkthrough 3: Using School-Level Aggregate Data to Illuminate Educational Inequities: Presenter(s)
 - 2021-04-07: Chapter 10. Walkthrough 4: Longitudinal Analysis With Federal Students With Disabilities Data: Presenter(s)
-- 2021-04-14: Chapter 11. Walkthrough 5: Text Analysis With Social Media Data: Presenter(s)
+- 2021-04-14: Chapter 11. Walkthrough 5: Text Analysis With Social Media Data: Shamsuddeen 
 - 2021-04-21: Chapter 12. Walkthrough 6: Exploring Relationships Using Social Network Analysis With Social Media Data: Presenter(s)
 - 2021-04-28: Chapter 13. Walkthrough 7: The Role (and Usefulness) of Multilevel Models: Presenter(s)
 - 2021-05-05: Chapter 14. Walkthrough 8: Predicting Students’ Final Grades Using Machine Learning Methods with Online Course Data: Presenter(s)
