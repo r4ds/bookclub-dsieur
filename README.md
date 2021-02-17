@@ -13,7 +13,7 @@ If you would like to present, please add your name next to a chapter using the [
 *Cohort 1: (starts 2021-02-10) - Wednesdays, 5pm EST/EDT*
 
 - 2021-02-10: Chapters 1-2: Introduction and How to Use this Book: Isabella Velásquez and Ryan Woodbury
-- 2021-02-17: Chapter 03. What does Data Science in Education Look Like?: Presenter(s)
+- 2021-02-17: Chapter 03. What does Data Science in Education Look Like?: Rob Lucas
 - 2021-02-24: Chapter 04. Special Considerations: Presenter(s)
 - 2021-03-03: Chapter 05. Getting Started with R and RStudio: Presenter(s)
 - 2021-03-10: Chapter 06. Foundational Skills: Presenter(s)
