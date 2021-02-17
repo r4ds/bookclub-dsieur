@@ -24,7 +24,7 @@ If you would like to present, please add your name next to a chapter using the [
 - 2021-04-14: Chapter 11. Walkthrough 5: Text Analysis With Social Media Data: *Layla Bouzoubaa*
 - 2021-04-21: Chapter 12. Walkthrough 6: Exploring Relationships Using Social Network Analysis With Social Media Data: Presenter(s)
 - 2021-04-28: Chapter 13. Walkthrough 7: The Role (and Usefulness) of Multilevel Models: Presenter(s)
-- 2021-05-05: Chapter 14. Walkthrough 8: Predicting Students’ Final Grades Using Machine Learning Methods with Online Course Data: Presenter(s)
+- 2021-05-05: Chapter 14. Walkthrough 8: Predicting Students’ Final Grades Using Machine Learning Methods with Online Course Data: shamsuddeen
 - 2021-05-12: Chapter 15. Introducing Data Science Tools To Your Education Job: Presenter(s)
 - 2021-05-19: Chapter 16. Teaching Data Science: Presenter(s)
 - 2021-05-26: Chapter 17. Learning More: Presenter(s)
