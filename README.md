@@ -15,7 +15,7 @@ If you would like to present, please add your name next to a chapter using the [
 - 2021-02-10: Chapters 1-2: Introduction and How to Use this Book: *Isabella Velásquez and Ryan Woodbury*
 - 2021-02-17: Chapter 03. What does Data Science in Education Look Like?: *Rob Lucas*
 - **2021-02-24: Chapter 04. Special Considerations: *Ryan Woodbury***
-- 2021-03-03: Chapter 05. Getting Started with R and RStudio: Presenter(s)
+- 2021-03-03: Chapter 05. Getting Started with R and RStudio: Mark LaVenia (can do 6 too, if 5 & 6 get collapsed)
 - 2021-03-10: Chapter 06. Foundational Skills: Presenter(s)
 - 2021-03-17: Chapter 07. Walkthrough 1: The Education Data Science Pipeline With Online Science Class Data: Presenter(s)
 - 2021-03-24: Chapter 08. Walkthrough 2: Approaching Gradebook Data From a Data Science Perspective: Presenter(s)
