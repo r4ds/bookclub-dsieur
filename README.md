@@ -4,7 +4,7 @@ Welcome to the R4DS Data Science in Education Using R Book Club!
 
 We are working together to read [Data Science in Education Using R](https://datascienceineducation.com/) by Ryan A. Estrellado, Emily A. Bovee, Jesse Mostipak, Joshua M. Rosenberg, and Isabella C. Velásquez.
 Join the #book_club-ds_in_education_using_r channel on the [R4DS Slack](https://r4ds.io/join) to participate.
-As we read, we are producing [notes about the book](https://r4ds.github.io/bookclub-dsieur/).
+As we read, we are producing notes about the book and [saving them in this bookdown](https://r4ds.github.io/bookclub-dsieur/).
 
 ## Meeting Schedule
 
@@ -14,8 +14,8 @@ If you would like to present, please add your name next to a chapter using the [
 
 - 2021-02-10: Chapters 1-2: Introduction and How to Use this Book: *Isabella Velásquez and Ryan Woodbury*
 - 2021-02-17: Chapter 03. What does Data Science in Education Look Like?: *Rob Lucas*
-- **2021-02-24: Chapter 04. Special Considerations: *Ryan Woodbury***
-- 2021-03-03: Chapter 05. Getting Started with R and RStudio & Chapter 06. Foundational Skills: Mark LaVenia
+- 2021-02-24: Chapter 04. Special Considerations: *Ryan Woodbury*
+- **2021-03-03: Chapter 05. Getting Started with R and RStudio & Chapter 06. Foundational Skills: *Mark LaVenia***
 - 2021-03-10: Chapter 07. Walkthrough 1: The Education Data Science Pipeline With Online Science Class Data: Presenter(s)
 - 2021-03-17: Chapter 08. Walkthrough 2: Approaching Gradebook Data From a Data Science Perspective: Presenter(s)
 - 2021-03-23: Chapter 09. Walkthrough 3: Using School-Level Aggregate Data to Illuminate Educational Inequities: *Alyssa Ibarra*
@@ -29,7 +29,6 @@ If you would like to present, please add your name next to a chapter using the [
 - 2021-05-19: Chapter 17. Learning More: Presenter(s)
 - 2021-05-26: Chapter 18. Additional Resources: Presenter(s)
 - 2021-06-02: Chapter 19. Conclusion: Where to Next?: Presenter(s)
-
 
 ## How to Present
 

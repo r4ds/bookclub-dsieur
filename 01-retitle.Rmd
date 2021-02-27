@@ -113,3 +113,99 @@
 01:08:02    Mark LaVenia:   very helpful. thanks!
 ```
 </details>
+
+# What does Data Science in Education Look Like?
+
+**Learning objectives:**
+
+- TBD
+
+## Slides
+
+- TBD
+
+## Meeting Videos
+
+### Cohort 1
+
+TBD
+`r knitr::include_url("")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:12:11	Rob Lucas:	PollEv.com/roblucas198
+00:14:20	Daniel Jin:	sorry have to step away for a moment!
+00:21:24	Marina:	I don't currently work in education so I'm going to skip this question (:
+00:32:17	Mark LaVenia:	data curation is a big part of my role
+00:32:41	Ronak Patel:	I have to hop off for a work call but will make sure to carve out an hour here on out. Thanks all!
+00:32:47	Alyssa Ibarra:	what is data curation? Sorry not familiar with the term
+00:34:00	Mark LaVenia:	@Alyssa - Finding data that teams need to answer a question, etc.
+00:34:16	Alyssa Ibarra:	Ah yes, thanks!
+00:39:58	Mark LaVenia:	data interrogation
+00:42:15	Mark LaVenia:	need to, but don't
+00:42:20	Ryan Woodbury:	same
+00:42:27	Marina:	^^^
+00:56:18	Marina:	I know this is an R-focused thing, but for basic/quick spatial analysis, I've really enjoyed using QGIS, which is more point and click
+00:57:41	Mark LaVenia:	thanks @Marina. Really trying to stretch into R and Python. Thanks for the tip on QGIS; will check that out
+01:02:57	Mark LaVenia:	+1
+01:03:52	Mark LaVenia:	Nicely done Rob
+```
+</details>
+
+# Special Considerations
+
+**Learning objectives:**
+
+- Understand data science and change management
+- Discuss reproducibility in our work
+- Share resources
+
+## Slides
+
+`r knitr::include_url("https://docs.google.com/presentation/d/1wIdhLRDrO4hyFVwulRD_YxECZk8OkcJQPqk4hM4f0rw/edit")`
+
+### Resources Shared
+
+- Switch: How to Change Things When Change is Hard by Chip Heath, Dan Heath
+- [ADKAR Model](https://www.prosci.com/)
+- [Education Data Done Right](https://www.eddatadoneright.com/blog/)
+- Weapons of Math Destruction by Cathy O'Neil
+- Thinking in Systems by Donella H. Meadows 
+- [We All Count](https://weallcount.com/)
+- [Urban Institute Applying Racial Equity Awareness in Data Visualization](https://urban-institute.medium.com/applying-racial-equity-awareness-in-data-visualization-bd359bf7a7ff)
+- [Education Equity Indicator Systems](https://www.nap.edu/catalog/25833/building-educational-equity-indicator-systems-a-guidebook-for-states-and)
+
+## Meeting Videos
+
+### Cohort 1
+
+TBD
+`r knitr::include_url("")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:10:51	Isabella Velásquez:	Here's the Github for the bookclub! https://github.com/r4ds/bookclub-dsieur
+00:11:02	Catherine Miller:	thank you!
+00:25:22	Catherine Miller:	5 levels, maybe? instructors, aides, administrators, executives, data folks
+00:26:17	Rob Lucas (he/him):	5 seems about right, depending where you divide them up
+00:27:02	Yukie Toyama:	Yeah 5 groups: researchers, funding organization, teachers, students, and parents/public
+00:27:04	Isabella Velásquez:	We cut across different strategies on our team. Top ones are leadership, non-technical team members, technical team members, external partners
+00:27:37	Catherine Miller:	the technical and non-technical categories are useful for this
+00:28:00	Catherine Miller:	plus external partners who see a different grain size of data
+00:28:19	Mark LaVenia:	We have an Executive Director, Chiefs, Directors, Specialists, and Managers--and my work requires working across and between all levels
+00:28:47	Isabella Velásquez:	yes. data privacy concerns are really important when considering what data is being shared
+00:28:53	Catherine Miller:	Thinking in Systems is also useful? Donella Meadows
+00:32:39	Catherine Miller:	that is cool
+00:42:23	Catherine Miller:	https://www.eddatadoneright.com/blog/
+00:45:02	Isabella Velásquez:	A couple of resources I'm digging into:
+00:45:17	Isabella Velásquez:	Urban Institute Applying Racial Equity Awareness in Data Visualization https://urban-institute.medium.com/applying-racial-equity-awareness-in-data-visualization-bd359bf7a7ff
+00:45:45	Isabella Velásquez:	National Academies of Sciences, Engineering, and Medicine https://www.nap.edu/catalog/25833/building-educational-equity-indicator-systems-a-guidebook-for-states-and
+00:47:05	Edgar Zamora:	https://weallcount.com
+00:50:20	Isabella Velásquez:	great points!!
+00:55:44	Mark LaVenia:	Thank you!
+```
+</details>
