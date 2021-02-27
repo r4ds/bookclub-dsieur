@@ -1,4 +1,13 @@
-chapter-title
-slide-1-title
+introduction-and-how-to-use-this-book
+slides
 meeting-videos
 cohort-1
+what-does-data-science-in-education-look-like
+slides-1
+meeting-videos-1
+cohort-1-1
+special-considerations
+slides-2
+resources-shared
+meeting-videos-2
+cohort-1-2
