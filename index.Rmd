@@ -13,7 +13,7 @@ description: "This is the product of the R4DS Online Learning Community's Book C
 
 # Welcome {-}
 
-This is a companion for the book [Data Science in Education Using R](https://link.to.book/) by AUTHOR.
+This is a companion for the book [Data Science in Education Using R](https://datascienceineducation.com/) by Ryan A. Estrellado, Emily A. Bovee, Jesse Mostipak, Joshua M. Rosenberg, and Isabella C. Velásquez.
 This companion is available at [r4ds.io/dsieur](r4ds.io/dsieur).
 
 This website is being developed by the [R4DS Online Learning Community](https://rfordatasci.com). Follow along, and [join the community](https://r4ds.io/join) to participate.
