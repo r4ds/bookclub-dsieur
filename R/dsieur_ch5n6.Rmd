@@ -1,0 +1,175 @@
+---
+title: "DSiEUR Bookclub - Ch. 5 & 6"
+author: "Mark LaVenia"
+date: "3/3/2021"
+output: powerpoint_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Useful Links
+
+Data Science in Education Using R
+Ryan A. Estrellado, Emily A. Bovee, Jesse Mostipak, Joshua M. Rosenberg, and Isabella C. Velásquez
+<https://datascienceineducation.com/>  
+  
+    
+Bookclub GitHub Repo
+<https://github.com/r4ds/bookclub-dsieur>
+
+## Chapters and Topics
+
+- Ch 5 Getting Started with R and RStudio
+- Ch 6 Foundational Skills
+
+## 5.6.2 Writing Code in an R Script
+
+print("We're going to use R as a calculator.")  
+print("First up, addition!")  
+12 + 8  
+632 + 41   
+print("Next, subtraction!")   
+48 - 6  
+0.65 - 1.42
+
+## R Script returned results
+
+```{r}
+
+print("We're going to use R as a calculator.")
+print("First up, addition!")
+12 + 8
+632 + 41
+print("Next, subtraction!")
+48 - 6
+0.65 - 1.42
+
+```
+
+## 5.7 Installing the {dataedu} Package
+
+
+- The recommended method for downloading dataedu kept giving me an error message
+  - install.packages("devtools", repos = "http://cran.us.r-project.org")
+  - devtools::install_github("data-edu/dataedu")
+<br><br>
+- So I went to the repo <https://github.com/data-edu/dataedu>, where it recommended using the "remotes" package, which worked for me.
+  - install.packages("remotes")
+  - remotes::install_github("data-edu/dataedu")
+
+## 6.5 Foundational Skills Framework
+
+- Projects  
+- Functions  
+- Packages  
+- Data  
+
+## Writing a function:
+'# we've named the function "addition" and asked for two arguments, "number_1" and "number_2"  
+addition <- function(number_1, number_2) {  
+    number_1 + number_2  
+}  
+
+addition(number_1 = 3, number_2 = 1)  
+
+addition(0.921, 12.01)  
+
+addition(62, 34)
+
+## Function output
+
+```{r}
+#' writing our function
+#' we've named the function "addition"
+#' and asked for two arguments, "number_1" and "number_2"
+addition <- function(number_1, number_2) {
+    number_1 + number_2
+}
+
+#' using our function
+#' below are 3 separate examples of utilizing our new function called "addition"
+#' note that we provide each argument separated by commas
+addition(number_1 = 3, number_2 = 1)
+
+addition(0.921, 12.01)
+
+addition(62, 34)
+
+```
+
+## Interpretting code
+
+library(tidyverse) 
+library(janitor)  
+
+roster <- roster_raw %>%   
+    clean_names() %>%   
+    remove_empty(c("rows", "cols")) %>%  
+    mutate(hire_date = excel_numeric_to_date(hire_date),  
+           cert = coalesce(certification, certification_1)) %>%   
+    select(-certification, -certification_1)  
+
+## apply filter function
+
+`# using the filter() function from the stats package  
+x <- 1:100  
+
+stats::filter(x, rep(1, 3))  
+
+`# using the filter() function from the dplyr package  
+starwars %>%   
+    dplyr::filter(mass > 85)
+    
+## Loading data
+
+dataedu::ma_data_init
+
+dataedu::ma_data_init -> ma_data
+
+ma_data_init <- dataedu::ma_data_init
+
+## Exploring and manipulating your data
+
+names(ma_data_init)  
+
+glimpse(ma_data_init)  
+
+summary(ma_data_init)  
+
+glimpse(ma_data_init$Town)  
+
+summary(ma_data_init$Town)    
+
+glimpse(ma_data_init$`AP_Test Takers`)  
+
+summary(ma_data_init$`AP_Test Takers`)  
+
+## 6.12.4 Exploring Our Data with the Pipe Operator
+
+ma_data_init %>%  
+    group_by(`District Name`) %>%  
+    count()  
+    
+ma_data_init %>% 
+    group_by(`District Name`) %>%  
+    count() %>%  
+    filter(n > 10) 
+
+## Exploring Our Data with the Pipe Operator Output (cont.)
+
+ma_data_init %>%  
+    group_by(`District Name`) %>%  
+    count() %>%  
+    filter(n > 10) %>%  
+    arrange(desc(n)) 
+
+```{r}
+
+
+
+
+
+```
+
