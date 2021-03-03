@@ -122,7 +122,7 @@
 
 ## Slides
 
-- TBD
+- `r knitr::include_url("https://docs.google.com/presentation/d/1FhmztqUQQotG3tOXrq96mlaiFF4NfjXMpx43Q9mf8pQ/edit?usp=sharing")`
 
 ## Meeting Videos
 
