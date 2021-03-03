@@ -101,7 +101,7 @@ addition(62, 34)
 
 ## Interpretting code
 
-library(tidyverse) 
+library(tidyverse)  
 library(janitor)  
 
 roster <- roster_raw %>%   
