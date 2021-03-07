@@ -11,3 +11,7 @@ slides-2
 resources-shared
 meeting-videos-2
 cohort-1-2
+getting-started-with-r-and-rstudio-foundational-skills
+slides-3
+meeting-videos-3
+cohort-1-3
