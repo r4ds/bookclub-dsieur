@@ -1,22 +1,284 @@
-# Chapter title
+# Introduction and How to Use this Book
 
 **Learning objectives:**
 
-- {These are nice to have, but take some extra work. It's ok to skip these if necessary.}
+- Intros & get to know each other
+- Understanding community expectations
+- Reviewing the reading schedule
+- Information on the weekly meetings
+- Information on using GitHub
 
-## {Slide 1 title}
+## Slides
 
-- {Create slides as sections, but keep them short like a slide.}
+`r knitr::include_url("https://docs.google.com/presentation/d/1klx76jh_P277UjQatDzWy7TLrikGW8jvAgHTM0XZp1U/edit?usp=sharing")`
 
 ## Meeting Videos
 
 ### Cohort 1
 
-`r knitr::include_url("")`
+`r knitr::include_url("https://youtu.be/b1f_Jrxt-Mc")`
 
 <details>
   <summary> Meeting chat log </summary>
   
 ```
+00:03:53    Morgan Grovenburg:  I saw the book mentioned a DataEdu Slack Channel (https://dataedu.slack.com/). Is that still going/active?
+
+00:05:10    Jon Harmon (jonthegeek):    Yes it is! It's not as active as R4DS, but there are usually discussions happening.
+
+00:05:10    Isabella Velásquez:    Hey Morgan! That’s is actually where the book got started :) There are lots of people on that Slack. I can send an invite link to join if anybody is interested.
+
+00:05:36    Morgan Grovenburg:  Yes I'm interested in an invite!
+
+00:05:40    Rob Lucas:  Me too!
+
+00:06:12    Isabella Velásquez:    Here it is! Let’s work together in Slack! It’s a faster, simpler way to talk shop, share files, and get work done. Join here: https://join.slack.com/t/dataedu/shared_invite/zt-9jkexbww-QxFbexhFoanFicVWaEpyBA
+
+00:16:55    beth.kelly: I prefer the camera too! Sorry.
+
+00:18:23    Isabella Velásquez:    Thanks Beth! Same here, I often feel siloed and I can’t wait to learn from all your work.
+
+00:21:10    Jon Harmon (jonthegeek):    r4ds.io/diseur will take you to the bookdown side of the repo, and allow you to hop over to the GitHub (assuming I set it up correctly)
+
+00:22:04    Layla Bouzoubaa:    John I get a 404
+
+00:22:15    Alyssa Ibarra:  Same here
+
+00:22:47    Ryan Woodbury:  https://github.com/r4ds/bookclub-dsieur
+
+00:23:19    Jon Harmon (jonthegeek):    Hmmm. Evidently it requires https://r4ds.io/dsieur
+
+00:23:35    Jon Harmon (jonthegeek):    ...which might have just solved a bug I've had elsewhere.
+
+00:24:04    Layla Bouzoubaa:    sweeet
+
+00:28:08    beth.kelly: Jon is freezing for everyone else, right?
+
+00:28:12    Morgan Grovenburg:  Yes
+
+00:28:12    Alyssa Ibarra:  I think you’re freezing, Jon
+
+00:28:17    Daniel Jin: Y
+
+00:28:51    Mark LaVenia:   https://github.com/r4ds/bookclub-dsieur
+
+00:29:52    Daniel Jin: 50% this time tho!
+
+00:30:16    Jon Harmon (jonthegeek):    I will talk about this on the Slack evidently 🙃
+
+00:30:28    Isabella Velásquez:    yeah absolutely. Can’t wait to get any feedback!!
+
+00:33:12    Jon Harmon (jonthegeek):    My internet is really bad today, gonna drop off!
+
+00:33:28    Ryan Woodbury:  Thanks for setting this up! See you soon.
+
+00:37:28    Isabella Velásquez:    Yes! And we’ll send a Slack message once we’re done.
+
+00:39:46    Ryan Woodbury:  I listened to a podcast about the Kentucky stats project. It sounded way cool!
+
+00:41:44    beth.kelly: That's great! I'd love to hear about the podcast.
+
+00:42:19    beth.kelly: I love the desks in your background Rob!
+
+00:43:14    Rob Lucas:  Thanks, Beth! They came out of a school in Ohio where my grandfather was a principal.
+
+00:43:28    Isabella Velásquez:    So glad to hear it!!
+
+00:46:12    Michael H:  Ryan E’s podcast About Practice is great
+
+00:46:39    Ryan Woodbury:  ^^ Yes ^^
+
+00:49:38    beth.kelly: So interested in retention in higher ed!
+
+00:51:28    Ryan Woodbury:  Here is the podcast link the “Data Ed Chat”, episode 10 discusses the Kentucky Stats Explorer: https://www.buzzsprout.com/1074286
+
+00:51:45    Ryan Woodbury:  And the “About Practice” podcast with two of the books authors: https://anchor.fm/about-practice/episodes/1-Hypothesis-Testing-for-Kids-is-Basically-Torture-eq0qc6
+
+00:53:48    Morgan Grovenburg:  I think that was everyone
+
+00:54:30    Mark LaVenia:   Thank you! :)
+
+00:54:55    Daniel Jin: Thank you Ryan and Isabella for organizing! Can't wait!
+
+00:55:00    Mark LaVenia:   I'll stick around for that too :)
+
+00:55:13    Marina: This is my first time participating in something like this. Usually, how long do these sessions last?
+
+00:56:01    Ryan Woodbury:  https://www.youtube.com/watch?v=d41oc2OMAuI&feature=youtu.be
+
+00:56:49    Ryan Woodbury:  The sessions are blocked for an hour. However, I have seen some videos from other book clubs that last for 30 minutes. It’ll depend on the week.
+
+00:57:31    Marina: Ok, thanks!
+
+01:08:02    Mark LaVenia:   very helpful. thanks!
+```
+</details>
+
+# What does Data Science in Education Look Like?
+
+**Learning objectives:**
+
+- TBD
+
+## Slides
+
+- `r knitr::include_url("https://docs.google.com/presentation/d/1FhmztqUQQotG3tOXrq96mlaiFF4NfjXMpx43Q9mf8pQ/edit?usp=sharing")`
+
+## Meeting Videos
+
+### Cohort 1
+
+TBD
+`r knitr::include_url("https://www.youtube.com/watch?v=LYve96mqY44&feature=youtu.be")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:12:11	Rob Lucas:	PollEv.com/roblucas198
+00:14:20	Daniel Jin:	sorry have to step away for a moment!
+00:21:24	Marina:	I don't currently work in education so I'm going to skip this question (:
+00:32:17	Mark LaVenia:	data curation is a big part of my role
+00:32:41	Ronak Patel:	I have to hop off for a work call but will make sure to carve out an hour here on out. Thanks all!
+00:32:47	Alyssa Ibarra:	what is data curation? Sorry not familiar with the term
+00:34:00	Mark LaVenia:	@Alyssa - Finding data that teams need to answer a question, etc.
+00:34:16	Alyssa Ibarra:	Ah yes, thanks!
+00:39:58	Mark LaVenia:	data interrogation
+00:42:15	Mark LaVenia:	need to, but don't
+00:42:20	Ryan Woodbury:	same
+00:42:27	Marina:	^^^
+00:56:18	Marina:	I know this is an R-focused thing, but for basic/quick spatial analysis, I've really enjoyed using QGIS, which is more point and click
+00:57:41	Mark LaVenia:	thanks @Marina. Really trying to stretch into R and Python. Thanks for the tip on QGIS; will check that out
+01:02:57	Mark LaVenia:	+1
+01:03:52	Mark LaVenia:	Nicely done Rob
+```
+</details>
+
+# Special Considerations
+
+**Learning objectives:**
+
+- Understand data science and change management
+- Discuss reproducibility in our work
+- Share resources
+
+## Slides
+
+`r knitr::include_url("https://docs.google.com/presentation/d/1wIdhLRDrO4hyFVwulRD_YxECZk8OkcJQPqk4hM4f0rw/edit")`
+
+### Resources Shared
+
+- Switch: How to Change Things When Change is Hard by Chip Heath, Dan Heath
+- [ADKAR Model](https://www.prosci.com/)
+- [Education Data Done Right](https://www.eddatadoneright.com/blog/)
+- Weapons of Math Destruction by Cathy O'Neil
+- Thinking in Systems by Donella H. Meadows 
+- [We All Count](https://weallcount.com/)
+- [Urban Institute Applying Racial Equity Awareness in Data Visualization](https://urban-institute.medium.com/applying-racial-equity-awareness-in-data-visualization-bd359bf7a7ff)
+- [Education Equity Indicator Systems](https://www.nap.edu/catalog/25833/building-educational-equity-indicator-systems-a-guidebook-for-states-and)
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://youtu.be/VmusnwBQZMs")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:10:51	Isabella Velásquez:	Here's the Github for the bookclub! https://github.com/r4ds/bookclub-dsieur
+00:11:02	Catherine Miller:	thank you!
+00:25:22	Catherine Miller:	5 levels, maybe? instructors, aides, administrators, executives, data folks
+00:26:17	Rob Lucas (he/him):	5 seems about right, depending where you divide them up
+00:27:02	Yukie Toyama:	Yeah 5 groups: researchers, funding organization, teachers, students, and parents/public
+00:27:04	Isabella Velásquez:	We cut across different strategies on our team. Top ones are leadership, non-technical team members, technical team members, external partners
+00:27:37	Catherine Miller:	the technical and non-technical categories are useful for this
+00:28:00	Catherine Miller:	plus external partners who see a different grain size of data
+00:28:19	Mark LaVenia:	We have an Executive Director, Chiefs, Directors, Specialists, and Managers--and my work requires working across and between all levels
+00:28:47	Isabella Velásquez:	yes. data privacy concerns are really important when considering what data is being shared
+00:28:53	Catherine Miller:	Thinking in Systems is also useful? Donella Meadows
+00:32:39	Catherine Miller:	that is cool
+00:42:23	Catherine Miller:	https://www.eddatadoneright.com/blog/
+00:45:02	Isabella Velásquez:	A couple of resources I'm digging into:
+00:45:17	Isabella Velásquez:	Urban Institute Applying Racial Equity Awareness in Data Visualization https://urban-institute.medium.com/applying-racial-equity-awareness-in-data-visualization-bd359bf7a7ff
+00:45:45	Isabella Velásquez:	National Academies of Sciences, Engineering, and Medicine https://www.nap.edu/catalog/25833/building-educational-equity-indicator-systems-a-guidebook-for-states-and
+00:47:05	Edgar Zamora:	https://weallcount.com
+00:50:20	Isabella Velásquez:	great points!!
+00:55:44	Mark LaVenia:	Thank you!
+```
+</details>
+
+# Getting Started with R and RStudio & Foundational Skills
+
+**Learning objectives:**
+
+TBD
+
+## Slides
+
+`r knitr::include_url("./R/dsieur_ch5n6.pptx")`
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://youtu.be/QzctSsk2ok0")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:06:21    Layla Bouzoubaa:    Hello everyone
+00:06:47    Catherine Miller:   Hello!
+00:07:29    Mark LaVenia:   Hi everyone
+00:13:40    Ronak Patel:    3 minutes in and I've already learned something new!
+00:13:51    Daniel Jin: +1
+00:13:51    Morgan Grovenburg:  Me too!
+00:14:53    Ryan Woodbury:  It looks way better in the book down compared to Google Slides
+00:14:56    Carlo M:    reproducibility
+00:16:17    Catherine Miller:   thanks, that was helpful
+00:17:25    Mike Haugen:    The R markdown chapter in R4DS goes over benefits: https://r4ds.had.co.nz/r-markdown.html
+00:22:30    shamsuddeen:    New approach for installing packages: https://github.com/r-lib/pak
+00:26:20    Ryan Woodbury:  YES!!! I just used it!
+00:26:36    Carlo M:    Syntactic sugar of ifelse(is.na(certification), certification_1, certification)
+00:27:04    Marina: ^^ yeah, I had been using ifelse, but this looks neater
+00:27:05    Ryan Woodbury:  Trying to combine cohort data where each cohort has different variable names.
+00:30:42    Alyssa Ibarra:  According to Help, coalesce is from dplyr
+00:30:55    Layla Bouzoubaa:    janitor
+00:30:59    shamsuddeen:    coalesce is from dplyr?
+00:31:09    Layla Bouzoubaa:    janitor::remove_empty()
+00:31:14    shamsuddeen:    Oh yah, I see it
+00:31:25    Carlo M:    Yup, coalesce is dplyr
+00:37:22    Layla Bouzoubaa:    If you do in the ?stats::filter console, it is for time series data
+00:37:32    Layla Bouzoubaa:    He’s correct
+00:37:43    Alyssa Ibarra:  Thanks for that clarification!
+00:39:55    Morgan Grovenburg:  Always <-
+00:40:00    Mike Haugen:    ^^
+00:40:14    Ronak Patel:    -> gives me anxiety
+00:40:28    Carlo M:    When I get lazy, I end up using `->`
+00:40:43    Morgan Grovenburg:  My reason is to keep = straight
+00:40:48    Isabella Velásquez:    same! I only use -> when I don’t want to scroll all the way to the beginning of a pipe XD
+00:40:54    Layla Bouzoubaa:    Second Ronan’s point
+00:41:01    Layla Bouzoubaa:    ronak*
+00:42:53    Isabella Velásquez:    I once spent a lot of time before realizing I used ‘ instead of `
+00:46:40    Carlo M:    Morgan is right. The {stats} library would get masked when library(dplyr) is called
+00:50:07    shamsuddeen:    Happy Git with R is a good book on learning Gihub: https://happygitwithr.com
+00:52:56    Layla Bouzoubaa:    Sorry everyone I need to hop off. Cheers!
+00:53:01    Mike Haugen:    How do you get a branch?
+00:54:53    Alyssa Ibarra:  ^ same question
+00:56:29    Catherine Miller:   Thank you Mark :)
+00:56:31    Marina: This discussion is giving me scary git flashbacks
+00:56:39    Catherine Miller:   githell, right?
+00:57:20    Marina: ^^^
+00:58:53    Carlo M:    You’re doing great!!
+00:59:16    Catherine Miller:   I always get lost here, too.
+01:02:06    Isabella Velásquez:    I always create a branch by clicking the button next to main in R Studio
+01:03:48    Ronak Patel:    I gotta hop off for another meeting. Thanks, Mark. Great job today! See ya'll next week.
+01:03:49    Catherine Miller:   Thank you!!
+01:04:18    Catherine Miller:   Thank you for being brave and helping us learn, Mark!!
+01:04:20    shamsuddeen:    Thanks
+01:04:24    Alyssa Ibarra:  Thank you!
+01:04:37    Carlo M:    Thanks Mark!
 ```
 </details>
