@@ -58,5 +58,3 @@ ma_data_init %>%
   count() %>% 
   filter(n > 10) %>% 
   arrange()
-
-yxwexnwe
