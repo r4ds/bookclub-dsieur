@@ -213,7 +213,11 @@ TBD
 
 **Learning objectives:**
 
-TBD
+- Knitting ppt slides from Rmd
+- Writing function
+- Reading/nterpretting code
+- Avoiding/debugging typos
+- Piping `%>%` and convention preference `<-` vs `->`
 
 ## Slides
 
