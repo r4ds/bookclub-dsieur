@@ -15,3 +15,7 @@ getting-started-with-r-and-rstudio-foundational-skills
 slides-3
 meeting-videos-3
 cohort-1-3
+walkthrough-1-the-education-data-science-pipeline
+slides-4
+meeting-videos-4
+cohort-1-4
