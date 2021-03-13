@@ -357,11 +357,7 @@ ma_data_init %>%
 
 **Learning objectives:**
 
-- Knitting ppt slides from Rmd
-- Writing function
-- Reading/nterpretting code
-- Avoiding/debugging typos
-- Piping `%>%` and convention preference `<-` vs `->`
+Learning about key steps in data preparation, processing, wrangling using tidyverse (a set of packages).
 
 ## Slides
 
