@@ -828,3 +828,34 @@ To be updated!
 01:03:09	Edgar Zamora:	Great job! Thank you!
 ```
 </details>
+
+# Walkthrough 2: Approaching Gradebook Data From a Data Science Perspective
+
+**Learning objectives:**
+
+Learn about importing excel spreadsheets using a file path or `here()`, tidying data with `clean_names()` and `remove_empty()` from the {janitor} package, transforming data with `pivot_longer()` using `contains()` from the {stringr} package, visualizing data, correlation analysis with `cor()`, and modeling data with `lm()`.
+
+## Slides
+
+`r knitr::include_url("./R/2021-03-17/chapter_8_presentation.html")`
+
+<details>
+  <summary> Walkthrough 2 Rmd Script </summary>
+
+`r knitr::include_url("./R/2021-03-17/chapter_8_notes.html")`
+
+</details>
+
+## Meeting Videos
+
+### Cohort 1
+
+To be updated!
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+
+
+</details>
+
