@@ -19,3 +19,7 @@ walkthrough-1-the-education-data-science-pipeline
 slides-4
 meeting-videos-4
 cohort-1-4
+walkthrough-2-approaching-gradebook-data-from-a-data-science-perspective
+slides-5
+meeting-videos-5
+cohort-1-5
