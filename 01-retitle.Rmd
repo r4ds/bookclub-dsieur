@@ -798,7 +798,7 @@ ggplot(data = dat,
 
 ### Cohort 1
 
-`r knitr::include_url("https://youtu.be/lXWAfm0fh7Q")`
+`r knitr::include_url("https://www.youtube.com/embed/lXWAfm0fh7Q")`
 
 <details>
   <summary> Meeting chat log </summary>
@@ -883,4 +883,3 @@ To be updated!
 00:55:46	Mike Haugen:	Thanks!
 ```
 </details>
-
