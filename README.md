@@ -17,8 +17,8 @@ If you would like to present, please add your name next to a chapter using the [
 - 2021-02-24: Chapter 04. Special Considerations: *Ryan Woodbury*
 - 2021-03-03: Chapter 05. Getting Started with R and RStudio & Chapter 06. Foundational Skills: *Mark LaVenia*
 - 2021-03-10: Chapter 07. Walkthrough 1: The Education Data Science Pipeline With Online Science Class Data: *Yukie Toyama*
-- **2021-03-17: Chapter 08. Walkthrough 2: Approaching Gradebook Data From a Data Science Perspective: *Morgan Grovenburg***
-- 2021-03-24: Chapter 09. Walkthrough 3: Using School-Level Aggregate Data to Illuminate Educational Inequities: *Alyssa Ibarra*
+- 2021-03-17: Chapter 08. Walkthrough 2: Approaching Gradebook Data From a Data Science Perspective: *Morgan Grovenburg*
+- **2021-03-24: Chapter 09. Walkthrough 3: Using School-Level Aggregate Data to Illuminate Educational Inequities: *Alyssa Ibarra***
 - 2021-03-31: Chapter 10. Walkthrough 4: Longitudinal Analysis With Federal Students With Disabilities Data: *Isabella Velásquez*
 - 2021-04-07: Chapter 11. Walkthrough 5: Text Analysis With Social Media Data: *Layla Bouzoubaa*
 - 2021-04-14: Chapter 12. Walkthrough 6: Exploring Relationships Using Social Network Analysis With Social Media Data: *Carlo Medina*
