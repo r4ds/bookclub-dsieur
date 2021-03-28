@@ -883,3 +883,37 @@ To be updated!
 00:55:46	Mike Haugen:	Thanks!
 ```
 </details>
+
+# Walkthrough 3: Using School-Level Aggregate Data to Illuminate Educational Inequities
+
+**Learning objectives:**
+
+This chapter explores what aggregate data is, and how to access, clean, and explore it. 
+
+## Slides
+
+See RMD below!
+
+<details>
+  <summary> Walkthrough 3 Rmd Script </summary>
+
+`r knitr::include_url("./R/2021-03-24/Ch9_walkthrough3.Rmd")`
+
+</details>
+
+## Meeting Videos
+
+### Cohort 1
+
+To be updated!
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:26:06	Ryan Woodbury:	Here's a bit of history and potential future directions for FRL metric: https://dataqualitycampaign.org/resource/accurate-student-poverty-data-is-crucial-to-supporting-all-students/
+00:30:14	Isabella Velásquez:	here's another reference on FRPL; Urban Institute is coming up with an alternative measure (disclosure: my coworker is funding this project): https://www.urban.org/features/measuring-student-poverty-dishing-alternatives-free-and-reduced-price-lunch
+00:31:39	Isabella Velásquez:	also want to share my favorite tweet :) https://twitter.com/andrewheiss/status/1021944992351186944?s=21
+00:36:34	Ronak Patel:	Thanks for sharing those articles!
+```
+</details>
