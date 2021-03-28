@@ -892,14 +892,7 @@ This chapter explores what aggregate data is, and how to access, clean, and expl
 
 ## Slides
 
-See RMD below!
-
-<details>
-  <summary> Walkthrough 3 Rmd Script </summary>
-
-`r knitr::include_url("./R/2021-03-24/Ch9_walkthrough3.Rmd")`
-
-</details>
+`r knitr::include_url("./R/2021-03-17/Ch9_walkthrough3.html")`
 
 ## Meeting Videos
 
