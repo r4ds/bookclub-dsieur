@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Chapter 9</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.7/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Chapter 9
+## Walkthrough 3: Using School-Level Aggregate Data to Illuminate Educational Inequities
+
+---
+
+
+
+
+&lt;style type="text/css"&gt;
+.remark-code, .remark-code-inline{font-size: 80%},
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+&lt;/style&gt;
+
+
+###9.1 Topics Emphasized
+-	Importing data
+-	Tidying data
+-	Transforming data
+-	Visualizing data
+
+###9.2 Functions Introduced
+- `dplyr::mutate_at()`
+- `readRDS()`
+- `purrr::map and purrr::map_df()`
+- `purrr::set_names()`
+- `dplyr::slice()`
+---
+###9.3 Vocabulary
+- aggregate data
+- disaggregated data
+- data frame
+- Free/Reduced Price Lunch (FRPL)
+- histogram
+- lists
+- subgroup
+- trim
+- weighted average
+
+---
+
+###9.4 Overview
+This chapter explores what aggregate data is, and how to access, clean, and explore it. 
+
+###9.4.1 Background
+Aggregate data refers to numerical information (or non-numerical information, such as the names of districts or schools) that has the following characteristics:
+
+1.	collected from multiple sources and/or on multiple measures, variables, or individuals
+2.	compiled into data summaries or summary reports, typically for public reporting or statistical analysis 
+
+In this chapter, we’ll focus on educational equity by identifying and comparing patterns in student demographic groups.
+
+---
+###What is the difference between aggregate and student-level data?
+
+--
+
+
+```r
+library(tidyverse)
+
+# Create student-level data 
+tibble(
+  student = letters[1:10],
+  school = rep(letters[11:15], 2),
+  test_score = sample(0:100, 10, replace = TRUE)
+)
+```
+
+```
+# A tibble: 10 x 3
+   student school test_score
+   &lt;chr&gt;   &lt;chr&gt;       &lt;int&gt;
+ 1 a       k              70
+ 2 b       l              97
+ 3 c       m              39
+ 4 d       n              15
+ 5 e       o              99
+ 6 f       k               4
+ 7 g       l              23
+ 8 h       m              50
+ 9 i       n              30
+10 j       o              71
+```
+---
+class: middle
+
+####Aggregation
+Aggregate data totals up *test_score* to “hide” the student-level information. The rows of the resulting dataset represent the group level, here school.
+
+***
+
+```r
+tibble(
+  student = letters[1:10],
+  school = rep(letters[11:15], 2),
+  test_score = sample(0:100, 10, replace = TRUE)
+) %&gt;%
+  # Aggregate by school
+  group_by(school) %&gt;%
+  summarize(mean_score = mean(test_score))
+```
+
+```
+# A tibble: 5 x 2
+  school mean_score
+  &lt;chr&gt;       &lt;dbl&gt;
+1 k            61  
+2 l            48.5
+3 m            70.5
+4 n            41  
+5 o            12  
+```
+---
+
+###Disaggregating Aggregated Data
+
+Common disaggregations for students include gender, race/ethnicity, socioeconomic status, English learner designation, and whether they are served under the Individuals with Disabilities Education Act (IDEA)
+
+--
+###Disaggregating Data and Equity
+
+Disaggregated data is essential to monitor equity in educational resources and outcomes. If only aggregate data is provided, we are unable to distinguish how different groups of students are doing and what support they need. With disaggregated data, we can identify where solutions are needed to solve disparities in opportunity, resources, and treatment.
+
+---
+###Data Sources
+  There are many publicly available aggregate datasets related to education.
+
+####International level:
+-	Programme for International Student Assessment (PISA)
+
+####Federal:
+-	Civil Rights Data Collection (CRDC)
+-	Common Core of Data (CCD)
+-	EdFacts
+-	Integrated Postsecondary Education Data System (IPEDS)
+-	National Assessment for Educational Progress (NAEP)
+
+####State and district:
+-	California Department of Education
+-	Minneapolis Public Schools
+
+---
+###Selecting Data
+For the purposes of this walkthrough, we will be looking at a particular school district’s data.
+
+The district we focus on here reports their student demographics in a robust, complete way. Not only do they report the percentage of students in a subgroup, but they also include the number of students in each subgroup.
+
+--
+
+###9.5.1 Methods
+
+We will walk through how running analyses on data from a single district can help education data practitioners to understand and describe the landscape of needs and opportunities present. 
+
+We will use descriptive analysis on an aggregate dataset to find out whether there is a phenomenon present, what it is, and what may be worth trying to address through future supports, reforms, or interventions (Loeb et al., 2017).
+
+---
+###9.6 Load Packages
+
+
+```r
+library(tidyverse)
+library(here)
+library(janitor)
+library(dataedu)
+#library(tabulizer) #might cause issues on install
+```
+
+--
+###9.7 Import Data
+1.	We can use {tabulizer}, which pulls the PDF data into lists using extract_tables().
+2.	We can get the data from the book’s Github repository
+3.	We can get the data from the {dataedu} package.
+--
+
+
+```r
+# Get data using {dataedu}
+race_pdf &lt;-
+  dataedu::race_pdf
+```
+---
+
+```r
+race_df &lt;-
+  race_pdf %&gt;%
+  # Turn each page into a tibble
+  map(~ as_tibble(.x, .name_repair = "unique")) %&gt;% 
+  # Make data frame and remove unnecessary rows
+  map_df(~ slice(.,-1:-2)) %&gt;%
+  # Use descriptive column names
+  set_names(
+    c(
+      "school_group",
+      "school_name",
+      "grade",
+      "na_num", # Native American number of students
+      "na_pct", # Native American percentage of students
+      "aa_num", # African American number of students
+      "aa_pct", # African American percentage
+      "as_num", # Asian number of students
+      "as_pct", # Asian percentage
+      "hi_num", # Hispanic number of students
+      "hi_pct", # Hispanic percentage
+      "wh_num", # White number of students
+      "wh_pct", # White percentage
+      "pi_pct", # Pacific Islander percentage
+      "blank_col",
+      "tot" # Total number of students (from the Race PDF)
+    )
+  )
+```
+---
+####Data frame exploration:
+
+```
+# A tibble: 8 x 16
+  school_group school_name       grade na_num na_pct aa_num aa_pct as_num as_pct
+  &lt;chr&gt;        &lt;chr&gt;             &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; 
+1 "Cont Alt"   RON MCDONALD HOU… ""    ""     0.0%   ""     0.0%   ""     0.0%  
+2 "Cont Alt"   RON MCDONALD HOU… ""    ""     0.0%   ""     0.0%   "1"    100.0%
+3 ""           RON MCDONALD HOU… ""    "0"    0.0%   "3"    42.9%  "1"    14.3% 
+4 "Cont Alt"   VOA PHOENIX 10    ""    "2"    50.0%  "2"    50.0%  ""     0.0%  
+5 "Cont Alt"   VOA PHOENIX 11    ""    ""     0.0%   "14"   73.7%  ""     0.0%  
+6 "Cont Alt"   VOA PHOENIX 12    ""    "3"    3.6%   "37"   44.0%  ""     0.0%  
+7 ""           VOA PHOENIX Total ""    "5"    4.7%   "53"   49.5%  "0"    0.0%  
+8 ""           Grand Total       ""    "1194" 3.5%   "1284… 37.3%  "2000" 5.8%  
+# … with 7 more variables: hi_num &lt;chr&gt;, hi_pct &lt;chr&gt;, wh_num &lt;chr&gt;,
+#   wh_pct &lt;chr&gt;, pi_pct &lt;chr&gt;, blank_col &lt;chr&gt;, tot &lt;chr&gt;
+```
+
+
+```r
+race_df2 &lt;-
+  race_df %&gt;%
+  # Remove unnecessary columns
+  select(-school_group, -grade, -pi_pct, -blank_col) %&gt;%
+  # Filter to get grade-level numbers
+  filter(str_detect(school_name, "Total"),
+         school_name != "Grand Total") %&gt;%
+  # Clean up school names
+  mutate(school_name = str_replace(school_name, "Total", "")) %&gt;%
+  # Remove white space
+  mutate_if(is.character, trimws) %&gt;%
+  # Turn percentage columns into numeric and decimal format
+  mutate_at(vars(contains("pct")), list( ~ as.numeric(str_replace(., "%", "")) / 100))
+```
+---
+####Import Free Reduced Price Lunch (FRPL) PDFs
+
+
+```r
+# Get data using {dataedu}
+frpl_pdf &lt;-
+  dataedu::frpl_pdf
+```
+
+
+```r
+frpl_df &lt;-
+  frpl_pdf %&gt;%
+  # Turn each page into a tibble
+  map(~ as_tibble(.x, .name_repair = "unique")) %&gt;% 
+  # Make data frame and remove unnecessary rows
+  map_df( ~ slice(.,-1)) %&gt;%
+  # Use descriptive column names
+  set_names(
+    c(
+      "school_name",
+      "not_eligible_num", # Number of non-eligible students,
+      "reduce_num", # Number of students receiving reduced price lunch
+      "free_num",   # Number of students receiving free lunch
+      "frpl_num",  # Total number of students (from the FRPL PDF)
+      "frpl_pct" # Free/reduced price lunch percentage
+    )
+  )
+```
+---
+
+```
+# A tibble: 6 x 6
+  school_name         not_eligible_num reduce_num free_num frpl_num frpl_pct
+  &lt;chr&gt;               &lt;chr&gt;            &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   
+1 "WEBSTER COMMUNITY" "145"            "15"       "137"    "297"    "51.2%" 
+2 "WHITTIER"          "129"            "39"       "360"    "528"    "75.6%" 
+3 "WINDOM"            "382"            "55"       "144"    "581"    "34.3%" 
+4 "ELM K_08"          "8734"           "1285"     "9910"   "19929"  "56.2%" 
+5 ""                  ""               ""         ""       ""       ""      
+6 "ANTHONY"           "485"            "39"       "257"    "781"    "37.9%" 
+```
+
+
+```r
+frpl_df2 &lt;-
+  frpl_df %&gt;%
+  filter(
+    # Remove blanks
+    school_name != "",
+    # Filter out the rows in this list
+    !school_name %in% c(
+      "ELM K_08",
+      "Mid Schl",
+      "High Schl",
+      "Alt HS",
+      "Spec Ed Total",
+      "Cont Alt Total",
+      "Hospital Sites Total",
+      "Dist Total"
+    )
+  ) %&gt;%
+  # Turn percentage columns into numeric and decimal format
+  mutate(frpl_pct = as.numeric(str_replace(frpl_pct, "%", "")) / 100)
+```
+---
+###Join datasets
+
+
+```r
+# create full dataset, joined by school name
+joined_df &lt;-
+  left_join(race_df2, frpl_df2, by = c("school_name")) %&gt;%
+  mutate_at(2:17, as.numeric)
+```
+Note: The total number of students from the Race/Ethnicity table does not match the total number of students from the FRPL table, even though they’re referring to the same districts in the same year. Why? 
+
+---
+###Next steps
+1.	We want to calculate, for each race, the number of students in ‘high poverty’ schools. This is defined by NCES as schools that are over 75% FRPL (Education Statistics U.S. Department of Education, 2019). When a school is over 75% FRPL, we count the number of students for that particular race under the variable [racename]_povnum.
+
+2.	The {janitor} package has a handy adorn_totals() function that sums columns for you. This is important because we want a weighted average of students in each category, so we need the total number of students in each group.
+
+3.	We create the weighted average of the percentage of each race by dividing the number of students by race by the total number of students.
+
+4.	To get FRPL percentage for all schools, we have to recalculate frpl_pct (otherwise, it would not be a weighted average).
+
+5.	To calculate the percentage of students by race who are in high poverty schools, we must divide the number of students in high poverty schools by the total number of students in that race.
+---
+
+```r
+district_merged_df &lt;-
+  joined_df %&gt;%
+  # Calculate high poverty numbers
+  mutate(
+    hi_povnum = case_when(frpl_pct &gt; .75 ~ hi_num),
+    aa_povnum = case_when(frpl_pct &gt; .75 ~ aa_num),
+    wh_povnum = case_when(frpl_pct &gt; .75 ~ wh_num),
+    as_povnum = case_when(frpl_pct &gt; .75 ~ as_num),
+    na_povnum = case_when(frpl_pct &gt; .75 ~ na_num)
+  ) %&gt;%
+  adorn_totals() %&gt;%
+  # Create percentage by demographic
+  mutate(
+    na_pct = na_num / tot,
+    aa_pct = aa_num / tot,
+    as_pct = as_num / tot,
+    hi_pct = hi_num / tot,
+    wh_pct = wh_num / tot,
+    frpl_pct = (free_num + reduce_num) / frpl_num,
+    # Create percentage by demographic and poverty
+    hi_povsch = hi_povnum / hi_num[which(school_name == "Total")],
+    aa_povsch = aa_povnum / aa_num[which(school_name == "Total")],
+    as_povsch = as_povnum / as_num[which(school_name == "Total")],
+    wh_povsch = wh_povnum / wh_num[which(school_name == "Total")],
+    na_povsch = na_povnum / na_num[which(school_name == "Total")]
+  )
+```
+---
+###Tidying
+
+
+```r
+district_tidy_df &lt;-
+  district_merged_df %&gt;%
+  pivot_longer(
+    cols = -matches("school_name"),
+    names_to = "category",
+    values_to = "value"
+  )
+```
+---
+count: false
+ 
+###9.8.1 Discovering Distributions
+.panel1-discover-dist-1[
+
+```r
+district_tidy_df %&gt;%
+# Filter for Total rows, since we want district-level information
+  filter(school_name == "Total",
+         str_detect(category, "pct"),
+         category != "frpl_pct") %&gt;%
+  ggplot(aes(x = reorder(category, -value), y = value)) +
+  geom_bar(stat = "identity", aes(fill = category)) +
+  labs(title = "Percentage of Population by Subgroup",
+       x = "Subgroup",
+       y = "Percentage of Population") +
+  scale_x_discrete(
+    labels = c(
+      "aa_pct" = "Black",
+      "wh_pct" = "White",
+      "hi_pct" = "Hispanic",
+      "as_pct" = "Asian",
+      "na_pct" = "Native Am."
+    )
+  ) +  # Makes labels present as percentages
+  scale_y_continuous(labels = scales::percent) +
+  scale_fill_dataedu() +
+  theme_dataedu() +
+  theme(legend.position = "none")
+```
+]
+ 
+.panel2-discover-dist-1[
+![](Ch9_walkthrough3_files/figure-html/discover-dist_1_01_output-1.png)&lt;!-- --&gt;
+]
+
+&lt;style&gt;
+.panel1-discover-dist-1 {
+  color: black;
+  width: 55.2820512820513%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-discover-dist-1 {
+  color: black;
+  width: 42.7179487179487%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-discover-dist-1 {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+Almost 40% of students are Black and around 36% are White.
+---
+###Eligibility for FRPL
+
+
+```r
+district_tidy_df %&gt;%
+  filter(category == "frpl_pct",
+         school_name == "Total")
+```
+
+```
+# A tibble: 1 x 3
+  school_name category value
+  &lt;chr&gt;       &lt;chr&gt;    &lt;dbl&gt;
+1 Total       frpl_pct 0.569
+```
+
+
+We see 56.9% of the students are eligible for FRPL compared to the U.S. average of 52.1%. This matches the PDFs.
+---
+count: false
+ 
+###9.8.2 Analyzing Spread
+.panel1-analyzing-spread-1[
+
+```r
+district_merged_df %&gt;%
+# Remove district totals
+  filter(school_name != "Total") %&gt;%
+# X-axis: percentage of White students within schools
+  ggplot(aes(x = wh_pct)) +
+  geom_histogram(breaks = seq(0, 1, by = .1),
+                 fill = dataedu_colors("darkblue"))  +
+  labs(title = "Count of Schools by White Population",
+       x = "White Percentage",
+       y = "Count") +
+  scale_x_continuous(labels = scales::percent) +
+  theme(legend.position = "none") +
+  theme_dataedu()
+```
+]
+ 
+.panel2-analyzing-spread-1[
+![](Ch9_walkthrough3_files/figure-html/analyzing-spread_1_01_output-1.png)&lt;!-- --&gt;
+]
+
+&lt;style&gt;
+.panel1-analyzing-spread-1 {
+  color: black;
+  width: 56.4516129032258%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-analyzing-spread-1 {
+  color: black;
+  width: 41.5483870967742%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-analyzing-spread-1 {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+26 of the 74 (35%) of schools have between 0-10% White students. More than half of schools enroll fewer than 30% of White students even though White students make up 35% of the district student population.
+
+---
+class:middle
+
+####&lt;div align="center"&gt; The school race demographics are not representative of the district populations but does that hold for socioeconomic status as well? &lt;/div&gt;
+
+---
+
+###9.9 Analysis
+
+###9.9.1 Creating Categories
+High-poverty schools are defined as public schools where more than 75% of the students are eligible for FRPL. According to NCES, 24% of public school students attended high-poverty schools. However, different subgroups are overrepresented and underrepresented within the high poverty schools. Is this the case for this district?
+---
+count: false
+ 
+
+.panel1-poverty-subgroup-1[
+
+```r
+district_tidy_df %&gt;%
+  filter(school_name == "Total",
+         str_detect(category, "povsch")) %&gt;%
+  ggplot(aes(x = reorder(category,-value), y = value)) +
+  geom_bar(stat = "identity", aes(fill = factor(category))) +
+  labs(title = "Subgroup Distribution in High Poverty Schools",
+       x = "Subgroup",
+       y = "Percentage in High Poverty Schools") +
+  scale_x_discrete(
+    labels = c(
+      "aa_povsch" = "Black",
+      "wh_povsch" = "White",
+      "hi_povsch" = "Hispanic",
+      "as_povsch" = "Asian",
+      "na_povsch" = "Native Am."
+    )
+  ) +
+  scale_y_continuous(labels = scales::percent) +
+  scale_fill_dataedu() +
+  theme_dataedu() +
+  theme(legend.position = "none")
+```
+]
+ 
+.panel2-poverty-subgroup-1[
+![](Ch9_walkthrough3_files/figure-html/poverty-subgroup_1_01_output-1.png)&lt;!-- --&gt;
+]
+
+&lt;style&gt;
+.panel1-poverty-subgroup-1 {
+  color: black;
+  width: 54.4444444444444%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-poverty-subgroup-1 {
+  color: black;
+  width: 43.5555555555556%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-poverty-subgroup-1 {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+8% of White students attend high poverty schools, compared to 43% of Black students, 39% of Hispanic students, 28% of Asian students, and 45% of Native American students. Non-White students are disproportionally attending high poverty schools.
+
+---
+count: false
+ 
+###9.9.2 Reveal Relationships
+.panel1-race-frpl-plot-1[
+
+```r
+district_merged_df %&gt;%
+  filter(school_name != "Total") %&gt;%
+  ggplot(aes(x = wh_pct, y = frpl_pct)) +
+  geom_point(color = dataedu_colors("green")) +
+  labs(title = "FRPL Percentage vs. White Percentage",
+       x = "White Percentage",
+       y = "FRPL Percentage") +
+  scale_y_continuous(labels = scales::percent) +
+  scale_x_continuous(labels = scales::percent) +
+  theme_dataedu() +
+  theme(legend.position = "none")
+```
+]
+ 
+.panel2-race-frpl-plot-1[
+![](Ch9_walkthrough3_files/figure-html/race-frpl-plot_1_01_output-1.png)&lt;!-- --&gt;
+]
+
+&lt;style&gt;
+.panel1-race-frpl-plot-1 {
+  color: black;
+  width: 49%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-race-frpl-plot-1 {
+  color: black;
+  width: 49%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-race-frpl-plot-1 {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+---
+###9.10 Results
+
+1.	There exists a distribution of race/ethnicity within schools that are not representative of the district.
+
+2.	Students of color are overrepresented in high poverty schools.
+
+3.	There is a negative relationship between the percentage of White students in a school and the percentage of students eligible for FRPL.
+
+--
+
+###9.11 Conclusion
+
+Disaggregating aggregate data can allow us to showcase the inequity in a system and suggest interventions for what we can do to improve the situation in the district.
+
+Research shows that racial and socioeconomic diversity in schools can provide students with a range of cognitive and social benefits. Therefore, the deep segregation that exists in the district can have adverse effects on students. Furthermore, high-poverty schools may lack other educational resources that are available in low-poverty schools.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:10",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
