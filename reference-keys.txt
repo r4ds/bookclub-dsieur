@@ -23,3 +23,7 @@ walkthrough-2-approaching-gradebook-data-from-a-data-science-perspective
 slides-5
 meeting-videos-5
 cohort-1-5
+walkthrough-3-using-school-level-aggregate-data-to-illuminate-educational-inequities
+slides-6
+meeting-videos-6
+cohort-1-6
