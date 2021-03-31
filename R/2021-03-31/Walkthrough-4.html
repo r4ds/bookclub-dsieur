@@ -279,7 +279,7 @@ filenames &lt;- glue("{filenames}.csv")
 urls &lt;- glue("{repo}{data}{filenames}")
 local_filenames &lt;- glue("{here('Desktop', 'data', 'longitudinal_data')}/{filenames}")
 
-walk2( urls, local_filenames, ~ download.file(url = urls, destfile = local_filenames, mode = "w"))
+walk2(urls, local_filenames, ~ download.file(url = .x, destfile = .y, mode = "w"))
 ```
 ]
 ]
