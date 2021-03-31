@@ -563,7 +563,7 @@ child_counts %>%
 ```
 
 ```{r, message = FALSE}
-# filter to top 6 states and create a new object
+# filter to top states and create a new object
 high_count <-
   child_counts %>%
   filter(state %in% c("california", "florida", "new york", "pennsylvania", "texas"))
