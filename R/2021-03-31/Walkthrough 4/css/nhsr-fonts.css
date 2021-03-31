@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Gochi+Hand&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
+.remark-code, .remark-inline-code {
+  font-family: 'Inconsolata', 'Cabin', monospace;
+}
+
+h1 {
+   font-family: "Gochi Hand";
+}
+
+h2, h3, body {
+  font-family: "Cabin";
+  color: #003f5c;
+}
+
+h2, h3 {
+  color: #ae802e;
+}

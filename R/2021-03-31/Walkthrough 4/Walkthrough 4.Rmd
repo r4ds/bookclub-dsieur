@@ -1,0 +1,980 @@
+---
+title: "Longitudinal Analysis With Federal Students With Disabilities Data"
+subtitle: "Walkthrough 4"
+author: "Isabella Velásquez"
+institute: "R4DS Bookclub"
+date: "March 31, 2021"
+output:
+  xaringan::moon_reader:
+    css: 
+      - default
+      - css/nhsr.css
+      - css/nhsr-fonts.css
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: tomorrow-night
+      highlightLines: true
+      highlightLanguage: ["r"]
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      after_body: [css/insert-logo.html]
+---
+
+```{r setup, include = FALSE}
+library(knitr)
+library(tidyverse)
+library(nhsrtheme)
+library(icons)
+library(xaringanExtra)
+library(dataedu)
+library(lubridate)
+
+# set default options
+opts_chunk$set(fig.width = 7.252,
+               fig.height = 4,
+               dpi = 300)
+
+xaringanExtra::use_panelset()
+
+all_files <- dataedu::all_files
+child_counts <- dataedu::child_counts
+```
+
+class: title-slide, left, bottom, inverse
+background-image: url(img/title.jpg)
+background-size: cover
+
+.pull-left[
+# `r rmarkdown::metadata$title`
+----
+## **`r rmarkdown::metadata$subtitle`**
+### `r rmarkdown::metadata$author`
+### `r rmarkdown::metadata$date`
+]
+
+.palegrey[.right[.footnote[Photo by [Ave Calvar](https://unsplash.com/@shotbyrain)]]]
+
+---
+class: center, middle, inverse
+
+# Topics Introduced
+
+--
+
+----
+
+.center[
+`r icons::fontawesome$solid$table`
+Importing
+]
+
+--
+
+.center[
+`r icons::fontawesome$solid$broom`
+Tidying
+]
+
+--
+
+.center[
+`r icons::fontawesome$solid$random`
+Transforming
+]
+
+--
+
+.center[
+`r icons::fontawesome$solid$eye`
+Visualizing
+]
+
+--
+
+.center[
+`r icons::fontawesome$solid$question`
+Modeling
+]
+
+--
+
+.center[
+`r icons::fontawesome$solid$comment`
+Communicating
+]
+
+---
+
+# Functions & Vocabulary
+
+--
+
+.pull-left[
+## Functions
+
+* list.files()
+* download.file()
+* lubridate::ymd()
+* identical()
+* dplyr::top_n()
+* ggplot2::geom_jitter()
+* dplyr::arrange()
+
+]
+
+--
+
+.pull-right[
+## Vocabulary
+
+* aggregate data
+* file path
+* list
+* read in
+* tidy format
+* statistical model
+* student-level data
+* longitudinal analysis
+* ratio
+* subset
+* vector
+
+]
+
+---
+
+# Chapter Overview
+
+.left-column[
+### Approaches to longitudinal analysis
+
+Analysis or study of data with more than one time point with repeated measures over time
+
+]
+
+--
+
+.right-column[
+**Repeated cross-sections**
+
+* Whole surveys with same variables repeated at different points in time
+* Same information from different surveys from different time points
+
+**Panel datasets**
+
+* Repeated measures on a cohort
+
+**Time series analysis**
+
+* Summary of one concept tracked at repeated time periods
+
+**Cohort studies**
+
+**Event history datasets**
+
+<span style="background-color: #87af49">What type of analysis do you usually run?</span>
+
+<span style="background-color: #87af49">When do you look at data over time in your work?</span>
+
+.palegrey[.right[.footnote[[Source](https://slideplayer.com/slide/4595453/)]]]
+]
+---
+class: title-slide, left, bottom
+background-image: url(img/section.jpg)
+background-size: cover
+
+## Let's work with some data
+
+.small[
+Photo by [Joanna Kosinska](https://unsplash.com/@joannakosinska)]
+
+---
+background-color: #006876
+class: center, middle, inverse
+
+`r icons::fontawesome$solid$table`
+
+----
+
+# Import Data
+
+---
+
+# Loading Packages & Handling Conflicts
+
+.left-column[
+```
+library(tidyverse)
+library(dataedu)
+library(lubridate)
+library(here)
+```
+]
+
+.right-column[
+## Special Note on `here()`
+
+`here()` could be from multiple packages {plyr}, {here}
+
+Use `::` to declare the NAMESPACE and specify which package you'd like to use: `here::here()`
+
+<span style="background-color: #87af49">Have you ever run into package conflicts? How did you resolve them?</span>
+
+]
+
+---
+
+# Importing Data
+
+.panelset[
+.panel[.panel-name[{dataedu} Package]
+
+```
+dataedu::bchildcountandedenvironments2012 # individual datasets
+dataedu::all_files # combined files in list format
+dataedu::child_counts # combined dataset in data frame format (but this skips processing)
+```
+]
+
+.panel[.panel-name[Individual Source URL]
+
+```
+# must be done for each file
+
+download.file(
+  # the url argument takes a URL for a CSV file
+  url = 'https://bit.ly/3dCtVtf', 
+  # destfile specifies where the file should be saved
+  destfile = here::here("data",
+           "longitudinal_data",
+           "bchildcountandedenvironments2012.csv"), 
+  mode = "wb")
+```
+]
+
+.panel[.panel-name[Individual CSV Files]
+
+```
+# must be done for each file
+# data must be in corresponding folder
+
+read_csv(here::here(
+  "data",
+  "longitudinal_data",
+  "bchildcountandedenvironments2012.csv"
+),
+skip = 4)
+```
+]
+
+.panel[.panel-name[Multiple CSV Files]
+
+```
+# data must be in corresponding folder
+filenames <-
+  list.files(path = here::here("data", "longitudinal_data"),
+             full.names = TRUE)
+
+all_files <-
+  filenames %>%
+  # Apply the function read_csv to each element of filenames
+  map(., ~ read_csv(., skip = 4))
+```
+]
+
+.panel[.panel-name[Other Options]
+
+* {vroom} Package
+* <span style="background-color: #87af49">How else have you imported data?</span>
+
+]
+]
+
+---
+background-color: #006876
+class: inverse
+
+.left-column[
+# Process Data <br>`r icons::fontawesome$regular$edit`<br>
+]
+
+.right-column[
+1. Fix the variable names in the 2016 data
+2. Combine the datasets
+3. Pick variables
+4. Filter for the desired categories
+5. Rename the variables
+6. Standardize the state names
+7. Transform the column formats from wide to long using pivot_longer
+8. Change the data types of variables
+9. Explore NAs
+
+<img src="https://cfss.uchicago.edu/img/allison_horst_art/tidydata_2.jpg" width = 70%>
+
+.small[
+Illustration by [Allison Horst](https://github.com/allisonhorst/stats-illustrations)]
+]
+
+---
+# Process Data Part 1
+
+.panelset[
+.panel[.panel-name[Fix the Variable Names]
+
+When we print the 2016 dataset, we notice that the variable names are incorrect. Let’s verify that by looking at the first ten variable names of the 2016 dataset, which is the fifth element of all_files:
+
+```{r}
+names(all_files[[5]])[1:10]
+```
+To fix it, we’ll read the 2016 dataset again using read_csv() and the fifth element of filenames but this time will use the argument skip = 3. We’ll assign the newly read dataset to the fifth element of the all_files list:
+
+```
+all_files[[5]] <-
+  # Skip the first 3 lines instead of the first 4
+  read_csv(filenames[[5]], skip = 3)
+```
+]
+
+.panel[.panel-name[Pick Variables 1]
+
+* Our analytic questions are about gender, so let's pick the gender variable
+* Later, we'll need to filter our dataset by disability category and program location so we'’'ll want `SEA Education Environment` and `SEA Disability Category`
+* We want to make comparisons by state and reporting year, so we'll also pick `State Name` and `Year`
+
+```
+all_files[[1]] %>%
+  select(
+    Year,
+    contains("State", ignore.case = FALSE),
+    contains("SEA", ignore.case = FALSE),
+    contains("male")
+  )
+```
+]
+
+.panel[.panel-name[Pick Variables 2]
+```
+# build the function
+pick_vars <-
+  function(df) {
+    df %>%
+      select_at(vars(
+        Year,
+        contains("State", ignore.case = FALSE),
+        contains("SEA", ignore.case = FALSE),
+        contains("male")
+      ))
+  }
+
+# use the function with `all_files`
+all_files <-
+  all_files %>%
+  map(pick_vars)
+```
+]
+
+.panel[.panel-name[Combine Datasets]
+```
+child_counts <-
+  all_files %>%
+  # combine all datasets in `all_files`
+  bind_rows()
+```
+]
+]
+
+---
+
+# Filter Data
+
+.panelset[.panel[.panel-name[Look at Variables]
+```{r}
+child_counts %>%
+  # count number of times the category appears in the dataset
+  count(`SEA Disability Category`) %>% 
+  head(5)
+```
+]
+
+.panel[.panel-name[Choose Category]
+
+Since we will be visualizing and modeling gender variables for all students in the dataset, we’ll filter out all subgroups except “All Disabilities” and the age totals:
+
+```{r, results = FALSE}
+child_counts <-
+  child_counts %>%
+  filter(
+    # filter all but the All Disabilities category
+    `SEA Disability Category` == "All Disabilities",
+    # filter all but the age totals
+    `SEA Education Environment` %in% c("Total, Age 3-5", "Total, Age 6-21")
+  ) 
+```
+]
+]
+
+---
+
+# Clean Data
+
+.panelset[
+.panel[.panel-name[Rename Variables]
+```{r, results = FALSE}
+child_counts <-
+  child_counts %>%
+  rename(
+    # change these columns to more convenient names
+    year = Year,
+    state = "State Name",
+    age = "SEA Education Environment",
+    disability = "SEA Disability Category",
+    f_3_5 = "Female Age 3 to 5",
+    m_3_5 = "Male Age 3 to 5",
+    f_6_21 = "Female Age 6 to 21",
+    m_6_21 = "Male Age 6 to 21"
+  )
+```
+]
+
+.panel[.panel-name[Edit Data]
+```{r}
+child_counts %>%
+  count(state) %>%
+  head(4)
+```
+
+```{r, results = FALSE}
+child_counts <-
+  child_counts %>%
+  mutate(state = tolower(state))
+```
+]
+
+]
+
+---
+
+# Tidy Data
+
+.left-column[
+**Tidy data** is a specific way of organizing data into a consistent format which plugs into the tidyverse set of packages for R.
+
+**Resources**
+
+* [Tidy Data](https://datascienceineducation.com/references.html#ref-wickham2014) by Hadley Wickham
+* [Tidy data for efficiency, reproducibility, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/)
+* [Computing for the Social Sciences](https://cfss.uchicago.edu/notes/tidy-data/)
+* [R for Data Science](https://r4ds.had.co.nz/tidy-data.html)
+]
+
+.right-column[
+<img src="https://www.openscapes.org/img/blog/tidydata/tidydata_1.jpg" width = 100%>
+
+.small[
+Illustration by [Allison Horst](https://github.com/allisonhorst/stats-illustrations)]
+]
+]
+
+---
+# Tidy Data
+
+```{r}
+child_counts <-
+  child_counts %>%
+    pivot_longer(cols = f_3_5:m_6_21, 
+                 names_to = "gender", 
+                 values_to = "total")
+```
+
+```{r, echo = FALSE}
+child_counts %>% 
+  head(10)
+```
+---
+
+# Finish Processing Data
+
+.panelset[
+.panel[.panel-name[Create `gender` Variable]
+```{r}
+child_counts <- 
+  child_counts %>%
+  mutate(
+    gender = case_when(
+      gender == "f_3_5" ~ "f",
+      gender == "m_3_5" ~ "m",
+      gender == "f_6_21" ~ "f",
+      gender == "m_6_21" ~ "m",
+      TRUE ~ as.character(gender)))
+
+child_counts %>% head(5)
+```
+]
+
+.panel[.panel-name[Convert Types]
+```{r, warning = FALSE}
+child_counts <-
+  child_counts %>%
+  mutate(total = as.numeric(total),
+         year = ymd(year, truncated = 2))
+
+child_counts %>% head(5)
+```
+]
+
+.panel[.panel-name[Remove NA's]
+```{r}
+child_counts <-
+  child_counts %>%
+  filter(!is.na(total)) 
+```
+
+<span style="background-color: #87af49">What do you consider when removing NA's?</span>
+
+<span style="background-color: #87af49">How else have you removed NA's in the past?</span>
+
+]
+
+.panel[.panel-name[Further Filtering]
+```{r, results = FALSE, message = FALSE}
+child_counts %>%
+  group_by(state) %>%
+  summarize(mean_count = mean(total, na.rm = TRUE)) %>%
+  # which six states have the highest mean count of students with disabilities
+  top_n(6, mean_count)
+```
+
+```{r, message = FALSE}
+# filter to top 6 states and create a new object
+high_count <-
+  child_counts %>%
+  filter(state %in% c("california", "florida", "new york", "pennsylvania", "texas"))
+```
+]
+]
+---
+class: title-slide, left, top
+background-image: url(img/process.png)
+background-size: cover
+
+---
+background-color: #006876
+class: center, middle, inverse
+
+`r icons::fontawesome$solid$brain`
+
+# Analyze Data
+
+----
+
+## Visualize the Data
+
+---
+# Count of Female Students in Special Education Over Time
+
+.pull-left[
+### Code
+----
+
+```{r female-line, echo = TRUE, fig.show = 'hide', message = FALSE, warning = FALSE}
+high_count %>%
+  filter(gender == "f", age == "Total, Age 6-21") %>%
+  ggplot(aes(x = year, y = total, color = state)) +
+  geom_freqpoly(stat = "identity", size = 1) +
+  labs(title = "Count of Female Students in Special Education Over Time",
+       subtitle = "Ages 6-21") +
+  scale_color_dataedu() +
+  theme_dataedu()
+```
+]
+
+.pull-right[
+
+### Plot
+
+----
+
+```{r, echo = FALSE, ref.label = "female-line", warning = FALSE}
+```
+
+]
+
+---
+# Count of Male Students in Special Education Over Time
+
+.pull-left[
+### Code
+----
+
+```{r male-line, echo = TRUE, fig.show = 'hide', message = FALSE, warning = FALSE}
+high_count %>%
+  filter(gender == "m", age == "Total, Age 6-21") %>%
+  ggplot(aes(x = year, y = total, color = state)) +
+  geom_freqpoly(stat = "identity", size = 1) +
+  labs(title = "Count of Male Students in Special Education Over Time",
+       subtitle = "Ages 6-21") +
+  scale_color_dataedu() +
+  theme_dataedu()
+```
+]
+
+.pull-right[
+
+### Plot
+
+----
+
+```{r, echo = FALSE, ref.label = "male-line", warning = FALSE}
+```
+
+]
+
+---
+# Total Count of Students in Special Education Over Time
+
+.pull-left[
+### Code
+----
+
+Add age and gender values together using `group_by()` and `summarize()`.
+
+```{r total-line, echo = TRUE, fig.show = 'hide', message = FALSE, warning = FALSE}
+high_count %>%
+  group_by(year, state) %>%
+  summarize(n = sum(total)) %>%
+  ggplot(aes(x = year, y = n, color = state)) +
+  geom_freqpoly(stat = "identity", size = 1) +
+  labs(title = "Total Count of Students in Special Education Over Time",
+       subtitle = "Ages 3-21") +
+  scale_color_dataedu() +
+  theme_dataedu()
+```
+]
+
+.pull-right[
+
+### Plot
+
+----
+
+```{r, echo = FALSE, ref.label = "total-line", warning = FALSE, message = FALSE}
+```
+
+]
+
+---
+# Median Students with Disabilities Count
+
+.pull-left[
+### Code
+----
+
+```{r total-box, echo = TRUE, fig.show = 'hide', message = FALSE, warning = FALSE}
+high_count %>%
+  group_by(year, state) %>%
+  summarize(n = sum(total)) %>%
+  ggplot(aes(x = state, y = n)) +
+  geom_boxplot(fill = dataedu_colors("yellow")) +
+  labs(title = "Median Students with Disabilities Count",
+       subtitle = "All ages and genders, 2012-2017") +
+  theme_dataedu() 
+```
+]
+
+.pull-right[
+
+### Plot
+
+----
+
+```{r, echo = FALSE, ref.label = "total-box", warning = FALSE, message = FALSE}
+```
+
+]
+
+---
+# Male Student to Female Student Ratio Over Time
+
+.pull-left[
+### Code
+----
+
+Compare the male student count to the female student count using a ratio.
+
+* Use `pivot_wider()` to create separate columns for male and female students.
+* Use `mutate()` to create a new variable called ratio. The values in this column will be the result of dividing the count of male students by the count of female students.
+
+```{r ratio-line, echo = TRUE, fig.show = 'hide', message = FALSE, warning = FALSE}
+high_count %>%
+  group_by(year, state, gender) %>%
+  summarize(total = sum(total)) %>%
+  # Create new columns for male and female student counts
+  pivot_wider(names_from = gender, 
+              values_from = total) %>% 
+  # Create a new ratio column
+  mutate(ratio = m / f) %>%
+  ggplot(aes(x = year, y = ratio, color = state)) +
+  geom_freqpoly(stat = "identity", size = 1) +
+  scale_y_continuous(limits = c(1.5, 2.5)) +
+  labs(title = "Male Student to Female Student Ratio Over Time",
+       subtitle = "Ages 6-21") +
+  scale_color_dataedu() +
+  theme_dataedu()
+```
+]
+
+.pull-right[
+
+### Plot
+
+----
+
+```{r, echo = FALSE, ref.label = "ratio-line", warning = FALSE, message = FALSE}
+```
+
+]
+
+---
+background-color: #006876
+class: center, middle, inverse
+
+`r icons::fontawesome$solid$brain`
+# Analyze Data
+
+----
+
+## Model the Data
+
+--
+
+We'll explore the relationship between male and female student counts in our special education dataset. In particular, we'll test the hypothesis that this ratio has decreased over the years. Fitting a linear regression model that estimates the year as a predictor of the male to female ratio will help us do just that.
+
+---
+# Check the data we'll use for the model
+
+.panelset[
+.panel[.panel-name[Visualize Data]
+.pull-left[
+### Code
+----
+
+```{r compare-line, echo = TRUE, fig.show = 'hide', message = FALSE, warning = FALSE}
+child_counts %>%
+  filter(age == "Total, Age 6-21") %>%
+  pivot_wider(names_from = gender, 
+              values_from = total) %>%
+  ggplot(aes(x = f, y = m)) +
+  geom_point(size = 3, alpha = .5, color = dataedu_colors("green")) +
+  geom_smooth() +
+  labs(
+    title = "Comparison of Female Students to Male Students in Special Education",
+    subtitle = "Counts of students in each state, ages 6-21",
+    x = "Female students",
+    y = "Male students",
+    caption = "Data: US Dept of Education"
+  ) +
+  theme_dataedu()
+```
+]
+
+.pull-right[
+
+### Plot
+
+----
+
+```{r, echo = FALSE, ref.label = "compare-line", warning = FALSE, message = FALSE}
+```
+
+]
+]
+
+.panel[.panel-name[Check Data]
+
+```{r}
+child_counts %>%
+  filter(age == "Total, Age 6-21") %>%
+  pivot_wider(names_from = gender, 
+              values_from = total) %>% 
+  filter(f > 500000) %>%
+  select(year, state, age, f, m) %>% 
+  head(5)
+```
+]
+
+.panel[.panel-name[Filter Data]
+.pull-left[
+### Code
+----
+
+```{r compare-line-filtered, echo = TRUE, fig.show = 'hide', message = FALSE, warning = FALSE}
+child_counts %>%
+  filter(age == "Total, Age 6-21") %>%
+  pivot_wider(names_from = gender, 
+              values_from = total) %>%
+  # Filter for female student counts less than 500,000
+  filter(f <= 500000) %>%
+  ggplot(aes(x = f, y = m)) +
+  geom_point(size = 3, alpha = .5, color = dataedu_colors("green")) +
+  labs(
+    title = "Comparison of Female Students to Male Students with Disabilities",
+    subtitle = "Counts of students in each state, ages 6-21.\nDoes not include outlying areas and freely associated states",
+    x = "Female students",
+    y = "Male students",
+    caption = "Data: US Dept of Education") +
+  theme_dataedu()
+```
+]
+
+.pull-right[
+
+### Plot
+
+----
+
+```{r, echo = FALSE, ref.label = "compare-line-filtered", warning = FALSE, message = FALSE}
+```
+
+]
+]
+
+.panel[.panel-name[Create Model Data]
+```{r}
+model_data <- child_counts %>%
+  filter(age == "Total, Age 6-21") %>%
+  mutate(year = as.factor(year(year))) %>%
+  pivot_wider(names_from = gender, 
+              values_from = total) %>% 
+  # Exclude outliers
+  filter(f <= 500000) %>%
+  # Compute male student to female student ratio
+  mutate(ratio = m / f) %>%
+  select(-c(age, disability))
+
+model_data %>% count(year)
+```
+]
+
+.panel[.panel-name[Visualize Model Data]
+.pull-left[
+### Code
+----
+
+```{r model-jitter, echo = TRUE, fig.show = 'hide', message = FALSE, warning = FALSE}
+ggplot(data = model_data, aes(x = year, y = ratio)) +
+  geom_jitter(alpha = .5, color = dataedu_colors("green")) +
+  labs(title = "Male to Female Ratio Across Years (Jittered)") +
+  theme_dataedu()
+```
+]
+
+.pull-right[
+
+### Plot
+
+----
+
+```{r, echo = FALSE, ref.label = "model-jitter", warning = FALSE, message = FALSE}
+```
+
+]
+]
+]
+
+---
+# Model Data
+
+```{r}
+ratio_year <- 
+  lm(ratio ~ year, data = model_data)
+
+summary(ratio_year)
+```
+
+# Model Data
+
+.pull-left[
+### Code
+----
+
+```{r model-box, echo = TRUE, fig.show = 'hide', message = FALSE, warning = FALSE}
+model_data %>%
+  pivot_longer(cols = c(f, m), 
+               names_to = "gender", 
+               values_to = "students") %>% 
+  ggplot(aes(x = year, y = students, color = gender)) +
+  geom_boxplot() +
+  scale_y_continuous(labels = scales::comma) +
+  labs(
+    title = "Median Male and Female Student Counts in Special Education",
+    subtitle = "Ages 6-21. Does not include outlying areas and freely associated states",
+    x = "",
+    y = "",
+    caption = "Data: US Dept of Education") +
+  scale_color_dataedu() +
+  theme_dataedu()
+```
+]
+
+.pull-right[
+
+### Plot
+
+----
+
+```{r, echo = FALSE, ref.label = "model-box", warning = FALSE, message = FALSE}
+```
+
+]
+
+---
+background-color: #006876
+class: center, middle, inverse
+
+`r icons::fontawesome$solid$check`
+
+----
+
+# Report Results
+
+---
+
+.left-column[
+
+# Review Results & Next Steps
+
+]
+
+.right-column[
+
+## What'd we learn?
+
+We learned from that male to female ratios did not change in any meaningful way from 2012 to 2017 and that the median ratio across states was about two male students to every female student.
+
+1. Each state has a different count of students with disabilities–so different that we need to use statistics like ratios or visualizations to compare across states.
+
+2. The five states we looked at have increased their student with disabilities counts.
+
+3. Our model suggests that these decreases do not represent a big difference.
+
+## Conclusion
+
+1. **Further analyses**: While we explored student counts across each state and verified that there is variation in the counts, a good next step would be to combine these data with total enrollment data. <span style="background-color: #87af49">What other analyses should we run to add to this linear regression?</span>
+
+2. **Contextual data**: What is happening in these states around students with disabilities (policy? systems?) that we could use to build upon our results?
+
+3. <span style="background-color: #87af49">What other questions are raised from this analysis and what steps should we take in the future?</span>
+
+]
+
+---
+
+background-color: #006876
+class: center, middle, inverse
+# Questions?
+
+----
+
+[An Introduction to xaringan for Presentations: The Basics and Beyond](https://spcanelon.github.io/xaringan-basics-and-beyond/#links) by Silvia Canelón
