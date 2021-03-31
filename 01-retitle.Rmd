@@ -850,7 +850,7 @@ Learn about importing excel spreadsheets using a file path or `here()`, tidying 
 
 ### Cohort 1
 
-To be updated!
+`r knitr::include_url("https://www.youtube.com/watch?v=CNRWp-ao_Pc&list=PL3x6DOfs2NGgvd741DNAnn1MEitDJQP3c&index=6")`
 
 <details>
   <summary> Meeting chat log </summary>
@@ -898,7 +898,7 @@ This chapter explores what aggregate data is, and how to access, clean, and expl
 
 ### Cohort 1
 
-To be updated!
+`r knitr::include_url("https://www.youtube.com/watch?v=Z5KRaOgW0sk&list=PL3x6DOfs2NGgvd741DNAnn1MEitDJQP3c&index=7")`
 
 <details>
   <summary> Meeting chat log </summary>
