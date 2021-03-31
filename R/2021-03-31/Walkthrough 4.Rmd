@@ -301,9 +301,9 @@ filenames <- glue("bchildcountandedenvironments{rep(2012:2017)}")
 filenames[6] <- glue("{filenames[6]}-18")
 filenames <- glue("{filenames}.csv")
 urls <- glue("{repo}{data}{filenames}")
-dirs <- glue("{here('Desktop', 'data', 'longitudinal_data')}/{filenames}")
+local_filenames <- glue("{here('Desktop', 'data', 'longitudinal_data')}/{filenames}")
 
-walk2(urls, dirs, ~ download.file(url = urls, destfile = dirs, mode = "w"))
+walk2( urls, local_filenames, ~ download.file(url = urls, destfile = local_filenames, mode = "w"))
 ```
 ]
 ]
