@@ -1,6 +1,6 @@
 ---
 title: "Longitudinal Analysis With Federal Students With Disabilities Data"
-subtitle: "Walkthrough 4"
+subtitle: "Chapter 10 / Walkthrough 4"
 author: "Isabella Velásquez"
 institute: "R4DS Bookclub"
 date: "March 31, 2021"
@@ -227,6 +227,7 @@ Use `::` to declare the NAMESPACE and specify which package you'd like to use: `
 ---
 
 # Importing Data
+<span style="background-color: #87af49">How else have you imported data?</span>
 
 .panelset[
 .panel[.panel-name[{dataedu} Package]
@@ -287,8 +288,23 @@ all_files <-
 .panel[.panel-name[Other Options]
 
 * {vroom} Package
-* <span style="background-color: #87af49">How else have you imported data?</span>
+* {purrr} + URLs (from my talented older brother, [@gvelasq](https://github.com/gvelasq))
 
+```
+library(glue)
+library(here)
+library(tidyverse)
+
+repo <- "https://github.com/data-edu/data-science-in-education/"
+data <- "blob/master/data/longitudinal_data/"
+filenames <- glue("bchildcountandedenvironments{rep(2012:2017)}")
+filenames[6] <- glue("{filenames[6]}-18")
+filenames <- glue("{filenames}.csv")
+urls <- glue("{repo}{data}{filenames}")
+dirs <- glue("{here('Desktop', 'data', 'longitudinal_data')}/{filenames}")
+
+walk2(urls, dirs, ~ download.file(url = urls, destfile = dirs, mode = "w"))
+```
 ]
 ]
 

@@ -25,7 +25,7 @@ background-size: cover
 .pull-left[
 # Longitudinal Analysis With Federal Students With Disabilities Data
 ----
-## **Walkthrough 4**
+## **Chapter 10 / Walkthrough 4**
 ### Isabella Velásquez
 ### March 31, 2021
 ]
@@ -203,6 +203,7 @@ Use `::` to declare the NAMESPACE and specify which package you'd like to use: `
 ---
 
 # Importing Data
+&lt;span style="background-color: #87af49"&gt;How else have you imported data?&lt;/span&gt;
 
 .panelset[
 .panel[.panel-name[{dataedu} Package]
@@ -263,8 +264,23 @@ all_files &lt;-
 .panel[.panel-name[Other Options]
 
 * {vroom} Package
-* &lt;span style="background-color: #87af49"&gt;How else have you imported data?&lt;/span&gt;
+* {purrr} + URLs (from my talented older brother, [@gvelasq](https://github.com/gvelasq))
 
+```
+library(glue)
+library(here)
+library(tidyverse)
+
+repo &lt;- "https://github.com/data-edu/data-science-in-education/"
+data &lt;- "blob/master/data/longitudinal_data/"
+filenames &lt;- glue("bchildcountandedenvironments{rep(2012:2017)}")
+filenames[6] &lt;- glue("{filenames[6]}-18")
+filenames &lt;- glue("{filenames}.csv")
+urls &lt;- glue("{repo}{data}{filenames}")
+dirs &lt;- glue("{here('Desktop', 'data', 'longitudinal_data')}/{filenames}")
+
+walk2(urls, dirs, ~ download.file(url = urls, destfile = dirs, mode = "w"))
+```
 ]
 ]
 
