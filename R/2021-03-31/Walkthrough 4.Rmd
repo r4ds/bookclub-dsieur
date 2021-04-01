@@ -1011,4 +1011,4 @@ class: center, middle, inverse
 
 ----
 
-[An Introduction to xaringan for Presentations: The Basics and Beyond](https://spcanelon.github.io/xaringan-basics-and-beyond/#links) by Silvia Canelón
+[An Introduction to xaringan for Presentations: The Basics and Beyond](https://spcanelon.github.io/xaringan-basics-and-beyond/#links) by Dr. Silvia Canelón
