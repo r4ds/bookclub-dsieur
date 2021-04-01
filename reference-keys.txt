@@ -27,3 +27,7 @@ walkthrough-3-using-school-level-aggregate-data-to-illuminate-educational-inequi
 slides-6
 meeting-videos-6
 cohort-1-6
+walkthrough-4-longitudinal-analysis-with-federal-students-with-disabilities-data
+slides-7
+meeting-videos-7
+cohort-1-7
