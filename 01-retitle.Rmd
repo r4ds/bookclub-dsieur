@@ -850,7 +850,7 @@ Learn about importing excel spreadsheets using a file path or `here()`, tidying 
 
 ### Cohort 1
 
-To be updated!
+`r knitr::include_url("https://www.youtube.com/watch?v=CNRWp-ao_Pc&list=PL3x6DOfs2NGgvd741DNAnn1MEitDJQP3c&index=6")`
 
 <details>
   <summary> Meeting chat log </summary>
@@ -898,7 +898,7 @@ This chapter explores what aggregate data is, and how to access, clean, and expl
 
 ### Cohort 1
 
-To be updated!
+`r knitr::include_url("https://www.youtube.com/watch?v=Z5KRaOgW0sk&list=PL3x6DOfs2NGgvd741DNAnn1MEitDJQP3c&index=7")`
 
 <details>
   <summary> Meeting chat log </summary>
@@ -908,5 +908,46 @@ To be updated!
 00:30:14	Isabella Velásquez:	here's another reference on FRPL; Urban Institute is coming up with an alternative measure (disclosure: my coworker is funding this project): https://www.urban.org/features/measuring-student-poverty-dishing-alternatives-free-and-reduced-price-lunch
 00:31:39	Isabella Velásquez:	also want to share my favorite tweet :) https://twitter.com/andrewheiss/status/1021944992351186944?s=21
 00:36:34	Ronak Patel:	Thanks for sharing those articles!
+```
+</details>
+
+# Walkthrough 4: Longitudinal Analysis With Federal Students With Disabilities Data
+
+**Learning objectives:**
+
+* Longitudinal analysis uses
+* Importing data options
+* Processing considerations: what order to take, what to consider for NA's
+* Importance of visualizing data
+* Considering next steps for modeling analysis
+
+## Slides
+
+`r knitr::include_url("./R/2021-03-31/Walkthrough-4.html")`
+
+## Meeting Videos
+
+### Cohort 1
+
+TBD
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:41:00	edgar zamora:	https://stackoverflow.com/questions/4862178/remove-rows-with-all-or-some-nas-missing-values-in-data-frame
+00:41:14	Mike Haugen:	For time series analysis, some of the forecasting functions, e..g exponential smoothing, require a certain approach to dealing with NAs. You can remove NAs for some, for others, you need to impute them
+00:42:20	Arami:	Can you explain what "time series analysis" is? Is it any analysis that tracks change over time?
+00:43:09	Mike Haugen:	Yes
+00:43:48	Mike Haugen:	Like forecasting emergency room presentations based on historical data on emergency room presentations over the last few years
+00:44:07	Mike Haugen:	or forecasting course attendance based on historical data.
+00:45:18	Rob Lucas:	Glad to know there is some other list-aversion out there!
+00:45:27	Mike Haugen:	For R, see Hyndman Forecasting: Principles and Practice: https://otexts.com/fpp3/index.html
+00:45:46	Arami:	Thanks!
+00:45:47	Ronak Patel:	I also suffer from severe list-aversion.
+00:46:33	Morgan Grovenburg:	injuries %>%
+  mutate(diag = fct_lump(fct_infreq(diag), n = 5)) %>%
+  group_by(diag) %>%
+  summarise(n = as.integer(sum(weight)))
 ```
 </details>
