@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Text Analysis with Social Media Data</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Layla Bouzoubaa" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Text Analysis with Social Media Data
+## <br/>Walkthrough 5
+### Layla Bouzoubaa
+### Apr 08, 2021
+
+---
+
+
+# Learning Objectives
+
+
++ Understand how to retrieve data from Twitter
++ Understand the robustness of Twitter data
++ Learn basic principles of **N**atural **L**anguage **P**rocessing (NLP)
++ Learn how to apply those principles to process social media data
++ Learn how to use the `tidytext` package to analyze social media data
++ Understand what a *sentiment analysis* is
++ Learn how to perform a *sentiment analysis* on Twitter data
+
+
+---
+
+class: center, inverse
+background-image: url("img/dsieur_pkgs.png")
+background-size: contain
+
+# Packages
+
+
+---
+
+# What is text analysis?
+&lt;/br&gt;
+
+&gt; "the process of automatically classifying and extracting meaningful information from unstructured text. It involves detecting and interpreting trends and patterns to obtain relevant insights from data" *
+
+## Use Cases
+
++ count the number of key words that appear in survey responses
++ analyze word patterns in message board posts
++ analyze the public opinion on certain topics 
+
+.footnote[
+*Someone on Google]
+
+
+---
+
+# Our Data
+.pull-left[
+## Source: Twitter
+
+## Strata: #TidyTuesday
+ - \# &lt;- hashtag
+   - i.e. #rstats
+
+]
+.pull-right[
+&lt;img src="img/tidyt.png" height="500px"&gt;
+
+]
+
+---
+
+# Importing &amp; Viewing Data
+
+## From the `dataedu` package
+
+
+```r
+raw_tweets &lt;- dataedu::tt_tweets
+```
+
+```r
+glimpse(raw_tweets)
+```
+
+## From `rtweet`
+
+
+```r
+library(rtweet)
+
+#limited to the last 7 days on the free tier
+tt &lt;- search_tweets("#TidyTuesday", n = 10000, include_rts = FALSE)
+```
+
+[Learn more about the rtweet package!](https://github.com/ropensci/rtweet)
+
+---
+
+# Process our Data
+
+.pull-left[
+&lt;img src= "img/tweets.png" width="500px"&gt;
+
+Right now, our data is 4,418 x 90!
+]
+.pull-right[
+## Goal: to have each row be a word
+## Important Vars: `status_id`, `text`
+
+
+```r
+library(tidyverse)
+```
+
+```
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+```
+
+```
+## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
+## ✓ tibble  3.1.0     ✓ dplyr   1.0.5
+## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.1
+```
+
+```
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+```
+
+```r
+tweets &lt;-
+  raw_tweets %&gt;%
+  # filter for English tweets
+  filter(lang == "en") %&gt;%
+  select(status_id, text) %&gt;%
+  # Convert the ID field to the character
+  mutate(status_id = as.character(status_id))
+```
+]
+---
+# Prepring data for counting (pt.1)
+
+## How can we count words when our tweet is string of text? 
+
+### We *tokenize* it!
+
+
+&gt; A token is a meaningful unit of text, such as a word, that we are interested in using for analysis, and tokenization is the process of splitting text into tokens. This one-token-per-row structure is in contrast to the ways text is often stored in current analyses, perhaps as strings or in a document-term matrix.
+
+&lt;/br&gt;
+To do this we use the `tidytext::unnest_tokens()` function.
+
+```r
+library(tidytext)
+tokens &lt;- 
+  tweets %&gt;%
+  unnest_tokens(output = word, input = text)
+```
+
+
+```r
+dim(tokens)
+```
+
+```
+## [1] 131233      2
+```
+
+```r
+#&gt; [1] 131233      2
+```
+
+---
+# Prepring data for counting (pt.2)
+
+.pull-left[
+&lt;img src= "img/token.png" height="500px"&gt;
+]
+
+.pull-right[
+There are a lot of unnecessary words included, like "a" or "the". These are called *stop words*.  
+
+Thankfully, we can filter those words by using the `stop_words` dataset included in the `tidytext` package.
+
+
+
+```r
+data(stop_words)
+
+tokens &lt;-
+  tokens %&gt;%
+  # note the that the varname "word" was
+  # chosen intentionally so that joining
+  # would be simpler
+  anti_join(stop_words, by = "word")
+```
+
+]
+---
+# Can we count already?
+
+This part is fairly simple. We can use methods from `dplyr` we already know!
+
+.pull-left[
+
+```r
+tokens %&gt;% 
+    count(word, sort = TRUE)
+```
+
+```
+## # A tibble: 15,335 x 2
+##    word            n
+##    &lt;chr&gt;       &lt;int&gt;
+##  1 t.co         5432
+##  2 https        5406
+##  3 tidytuesday  4316
+##  4 rstats       1748
+##  5 data         1105
+##  6 code          988
+##  7 week          868
+##  8 r4ds          675
+##  9 dataviz       607
+## 10 time          494
+## # … with 15,325 more rows
+```
+**Conclusion**: “tidytuesday” represents only 6% of all words
+]
+.pull-right[
+
+```r
+tokens %&gt;%
+  count(word, sort = TRUE) %&gt;%
+  # n as a percent of total words
+  mutate(percent = n / sum(n) * 100)
+```
+
+```
+## # A tibble: 15,335 x 3
+##    word            n percent
+##    &lt;chr&gt;       &lt;int&gt;   &lt;dbl&gt;
+##  1 t.co         5432   7.39 
+##  2 https        5406   7.36 
+##  3 tidytuesday  4316   5.87 
+##  4 rstats       1748   2.38 
+##  5 data         1105   1.50 
+##  6 code          988   1.34 
+##  7 week          868   1.18 
+##  8 r4ds          675   0.919
+##  9 dataviz       607   0.826
+## 10 time          494   0.672
+## # … with 15,325 more rows
+```
+
+]
+
+---
+# Sentiment Analysis
+
+## Goal: to see how the token "dataviz" is *positively* associated with other words in our tweets dataset
+
+&gt; When human readers approach a text, we use our understanding of the emotional intent of words to infer whether a section of text is positive or negative, or perhaps characterized by some other more nuanced emotion like surprise or disgust
+
+### Steps:
+1. Find an appropriate *lexicon*
+1. Join that lexicon with our data
+1. Filter on words that have a positive association
+1. Count the positive words
+1. Create vectors of unique `status_id`s that contain positive words and that contain the word `dataviz`
+1. Filtering OG tweet data by `status_id` for only those with `data_viz` mentioned 
+1. Add an indicator if a positive word was mentioned using `status_id`
+1. Analyzing the frequency of positive words in relation to `data_viz`
+---
+# Count Positive Words (Step 1)
+
+### What is a lexicon? 
+&gt; the vocabulary of a person, language, or branch of knowledge
+
+### Three general purpose lexicons:
++ `AFIN` from [Finn Årup Nielsen](http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010)
+    + scores between -5 to 5
++ `bing` from [Bing Liu and collaborators](https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html)
+    + binary (positive/negative)
++ `nrc` from [Saif Mohammad and Peter Turney](http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm)
+    + binary (yes/no)
+
+*Note*: All three of these lexicons are based on unigrams, i.e., single words. These lexicons contain many English words and the words are assigned scores for positive/negative sentiment
+
+
+```r
+library(textdata)
+# chosing to use the nrc lexicon
+get_sentiments("nrc")
+```
+
+---
+# Count Positive Words (Steps 2-4)
+
+### Match tokens to a positive/negative sentiment 
+.pull-left[
+
+```r
+nrc_pos &lt;-
+  get_sentiments("nrc") %&gt;%
+  filter(sentiment == "positive")
+
+# Match to tokens
+pos_tokens_count &lt;-
+  tokens %&gt;%
+  inner_join(nrc_pos, by = "word") %&gt;%
+  # Total appearance of positive words
+  count(word, sort = TRUE) 
+```
+]
+.pull-right[
+![](walkthrough_5_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+
+
+]
+---
+# Get Positive `Dataviz` Words  (Step 5)
+
+### Question: How many tweets with `dataviz` also had at least one positive word?
+
+Step 5: Create a vector of unique `status_id` that contain positive words and that contain the word `dataviz`
+
+
+```r
+dv_tokens &lt;-
+  tokens %&gt;%
+  filter(word == "dataviz") %&gt;% 
+  # there are several duplicate status ids
+  distinct(status_id)
+```
+
+
+```r
+pos_tokens &lt;- 
+  tokens %&gt;%
+  filter(word %in% nrc_pos$word) %&gt;% 
+  # there are several duplicate status ids
+  distinct(status_id)
+```
+
+---
+# Get tweets that contain positive word and `dataviz`
+
+## (Steps 6-8)
+.pull-left[
+#### Finally, filter our tweet data for those tweets that contain `dataviz` and see if that id also contained a positive word
+
+
+```r
+dv_pos &lt;-
+  tweets %&gt;%
+  # Only tweets that have the dataviz status_id
+  filter(status_id %in% dv_tokens$status_id) %&gt;%
+  # Is the status_id from our vector of positive word?
+  mutate(positive = if_else(status_id %in% pos_tokens$status_id, 1, 0))
+```
+]
+.pull-right[
+#### Get the frequency:
+
+
+```r
+dv_pos %&gt;%
+  count(positive) %&gt;%
+  mutate(perc = n / sum(n))
+```
+
+```
+## # A tibble: 2 x 3
+##   positive     n  perc
+##      &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+## 1        0   272 0.450
+## 2        1   333 0.550
+```
+]
+---
+# Birds-Eye View of Tweets 🐦
+
+.pull-left[
+Sometimes it's helpful to get pick a random selection of tweets to see how people are talking about #TidyTuesday.
+
+To do this, we will filter our tweet data on just positive words, not just those that have `dataviz` in them. 
+
+
+```r
+pos_tweets &lt;-
+  tweets %&gt;%
+  # filter only on tweets with a positive word
+  mutate(positive = if_else(status_id %in% pos_tokens$status_id, 1, 0)) %&gt;%
+  filter(positive == 1)
+```
+
+To get a random sample, we will use the `set.seed()` and `dplyr::sample_n()` functions.  
+
+Wait...`set.seed()`??
++ set the starting point used R's random number generator
++ ensures reproducible results
+
+]
+
+.pull-right[
+
+
+
+```r
+set.seed(123)
+
+pos_tweets %&gt;% 
+  sample_n(., size = 10)
+```
+
+```
+## # A tibble: 10 x 3
+##    status_id        text                                                positive
+##    &lt;chr&gt;            &lt;chr&gt;                                                  &lt;dbl&gt;
+##  1 102413893227811… "Enjoying #TidyTuesday since it's forcing me to fi…        1
+##  2 999166598580666… "My contribution to #TidyTuesday for this week. I …        1
+##  3 109010688945779… "gotta share the first attempt too 😄 @accidental__…        1
+##  4 113604560166424… "@phillynerd Can get started with the RStudio Clou…        1
+##  5 985983670715666… "Give a praise to @hirscheylab!\n\nWe used the cha…        1
+##  6 111863612744169… "Re-visualizing Economist's visualizations as part…        1
+##  7 114970466453286… "My first (and very belated) #tidytuesday experien…        1
+##  8 108133947105082… "My First submission to #TidyTuesday! Yay. Not ver…        1
+##  9 110739966677213… "@kareem_carr What are you talking about? Have you…        1
+## 10 115372814274761… "Happy #TidyTuesday! Did you know #CLUTTER has a d…        1
+```
+
+]
+---
+# Resources
+
+.pull-left[
++ [Text Mining with R](https://www.tidytextmining.com/index.html)
+
+&lt;img src= "img/tmwr.png" height="400px"&gt;
++ [rtweet Documentation](https://docs.ropensci.org/rtweet/)
+]
+.pull-right[
++ [Twitter Developer Portal](https://developer.twitter.com)
+
+&lt;img src= "img/twit_dev.png" height="400px"&gt;
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
