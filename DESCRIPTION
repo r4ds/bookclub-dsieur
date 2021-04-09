@@ -11,6 +11,8 @@ Imports:
     bookdown,
     details,
     emo,
-    tidyverse
+    tidyverse,
+    tidytext,
+    textdata
 Remotes: 
     hadley/emo
