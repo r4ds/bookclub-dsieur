@@ -929,7 +929,7 @@ This chapter explores what aggregate data is, and how to access, clean, and expl
 
 ### Cohort 1
 
-TBD
+`r knitr::include_url("https://www.youtube.com/watch?v=6k_F6XGEmqs")`
 
 <details>
   <summary> Meeting chat log </summary>
@@ -949,5 +949,43 @@ TBD
   mutate(diag = fct_lump(fct_infreq(diag), n = 5)) %>%
   group_by(diag) %>%
   summarise(n = as.integer(sum(weight)))
+```
+</details>
+
+# Walkthrough 5: Text Analysis With Social Media Data
+
+**Learning objectives:**
+
++ Understand how to retrieve data from Twitter
++ Understand the robustness of Twitter data
++ Learn basic principles of **N**atural **L**anguage **P**rocessing (NLP)
++ Learn how to apply those principles to process social media data
++ Learn how to use the `tidytext` package to analyze social media data
++ Understand what a *sentiment analysis* is
++ Learn how to perform a *sentiment analysis* on Twitter data
+
+## Slides
+
+`r knitr::include_url("./R/2021-04-07/walkthrough-5.html")`
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/watch?v=6k_F6XGEmqs")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:07:35	Layla Bouzoubaa:	Lol I love the office band, I have it too!!
+00:07:58	Ronak Patel:	Always good for a chuckle at the start of a meeting!
+00:32:49	Morgan Grovenburg:	If you haven't used `tidytext` before, I recommend Julia Silge's free learnr course: https://juliasilge.com/blog/learn-tidytext-learnr/
+00:33:18	Alyssa Ibarra:	Thanks! Is it just using whitespace as delimiter?
+00:33:40	shamsuddeen:	Also the book : https://www.tidytextmining.com
+00:43:08	Mike Haugen:	Love the Tidy Text book. Julia Silge also has Supervised Machine Learning for Text Analysis in R: https://smltar.com/
+01:02:30	Alyssa Ibarra:	Thank you!
+01:03:46	shamsuddeen:	Good talk
+01:04:35	Louis Carlo Medina:	thank you!!
 ```
 </details>
