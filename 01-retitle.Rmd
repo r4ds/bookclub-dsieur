@@ -129,7 +129,7 @@
 ### Cohort 1
 
 TBD
-`r knitr::include_url("https://www.youtube.com/watch?v=LYve96mqY44&feature=youtu.be")`
+`r knitr::include_url("https://www.youtube.com/embed/b1f_Jrxt-Mc")`
 
 <details>
   <summary> Meeting chat log </summary>
@@ -181,7 +181,7 @@ TBD
 
 ### Cohort 1
 
-`r knitr::include_url("https://youtu.be/VmusnwBQZMs")`
+`r knitr::include_url("https://www.youtube.com/embed/LYve96mqY44")`
 
 <details>
   <summary> Meeting chat log </summary>
@@ -293,7 +293,7 @@ ma_data_init %>%
 
 ### Cohort 1
 
-`r knitr::include_url("https://youtu.be/QzctSsk2ok0")`
+`r knitr::include_url("https://www.youtube.com/embed/QzctSsk2ok0")`
 
 <details>
   <summary> Meeting chat log </summary>
@@ -850,7 +850,7 @@ Learn about importing excel spreadsheets using a file path or `here()`, tidying 
 
 ### Cohort 1
 
-`r knitr::include_url("https://www.youtube.com/watch?v=CNRWp-ao_Pc&list=PL3x6DOfs2NGgvd741DNAnn1MEitDJQP3c&index=6")`
+`r knitr::include_url("https://www.youtube.com/embed/CNRWp-ao_Pc")`
 
 <details>
   <summary> Meeting chat log </summary>
@@ -898,7 +898,7 @@ This chapter explores what aggregate data is, and how to access, clean, and expl
 
 ### Cohort 1
 
-`r knitr::include_url("https://www.youtube.com/watch?v=Z5KRaOgW0sk&list=PL3x6DOfs2NGgvd741DNAnn1MEitDJQP3c&index=7")`
+`r knitr::include_url("https://www.youtube.com/embed/Z5KRaOgW0sk")`
 
 <details>
   <summary> Meeting chat log </summary>
@@ -929,7 +929,7 @@ This chapter explores what aggregate data is, and how to access, clean, and expl
 
 ### Cohort 1
 
-`r knitr::include_url("https://www.youtube.com/watch?v=6k_F6XGEmqs")`
+`r knitr::include_url("https://www.youtube.com/embed/6k_F6XGEmqs")`
 
 <details>
   <summary> Meeting chat log </summary>
@@ -972,7 +972,7 @@ This chapter explores what aggregate data is, and how to access, clean, and expl
 
 ### Cohort 1
 
-`r knitr::include_url("https://www.youtube.com/watch?v=6k_F6XGEmqs")`
+TBD
 
 <details>
   <summary> Meeting chat log </summary>
