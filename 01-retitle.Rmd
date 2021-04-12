@@ -16,7 +16,7 @@
 
 ### Cohort 1
 
-`r knitr::include_url("https://youtu.be/b1f_Jrxt-Mc")`
+`r knitr::include_url("https://www.youtube.com/embed/b1f_Jrxt-Mc")`
 
 <details>
   <summary> Meeting chat log </summary>
