@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.2 Meeting Videos | Data Science in Education Using R Book Club</title>
+  <title>Chapter 9 Walkthrough 5: Text Analysis With Social Media Data | Data Science in Education Using R Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.2 Meeting Videos | Data Science in Education Using R Book Club" />
+  <meta property="og:title" content="Chapter 9 Walkthrough 5: Text Analysis With Social Media Data | Data Science in Education Using R Book Club" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="r4ds/bookclub-dsieur" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.2 Meeting Videos | Data Science in Education Using R Book Club" />
+  <meta name="twitter:title" content="Chapter 9 Walkthrough 5: Text Analysis With Social Media Data | Data Science in Education Using R Book Club" />
   
   <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="slides-4.html"/>
-<link rel="next" href="walkthrough-2-approaching-gradebook-data-from-a-data-science-perspective.html"/>
+<link rel="prev" href="meeting-videos-7.html"/>
+<link rel="next" href="slides-8.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -213,47 +213,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="meeting-videos-4" class="section level2">
-<h2><span class="header-section-number">5.2</span> Meeting Videos</h2>
-<div id="cohort-1-4" class="section level3">
-<h3><span class="header-section-number">5.2.1</span> Cohort 1</h3>
-<iframe src="https://www.youtube.com/embed/lXWAfm0fh7Q" width="100%" height="400px">
-</iframe>
-<details>
-<p><summary> Meeting chat log </summary></p>
-<pre><code>00:04:35    Ryan Woodbury:  https://rfordatascience.slack.com/files/UQ4DR12BY/F01QUFD8V5H/dsieur_ch7_slides
-00:04:50    Ryan Woodbury:  https://rfordatascience.slack.com/files/UQ4DR12BY/F01RJ4ENF4Y/desieur_ch7_scripts.r
-00:04:55    Ryan Woodbury:  Slides, then script
-00:10:33    Ryan Woodbury:  Is it like skimr?
-00:14:57    Isabella Velásquez: super clear! love the color coding
-00:16:26    Edgar Zamora:   https://www.garrickadenbuie.com/project/tidyexplain/ I use these GIFs to help me visualize the different kind of joins. Get confused
-00:17:31    Rob Lucas:  Thanks for sharing that Edgar! The semi and anti joins were new to me. I think this will help me visualize them.
-00:26:26    Mark LaVenia:   you are doing great! Thanks!
-00:29:29    Ryan Woodbury:  The `mutate_*()` functions are being superseded by using the `across()` function within `mutate()`.
-00:30:03    Isabella Velásquez: here&#39;s some documentation on the mutate_* functions. https://dplyr.tidyverse.org/reference/mutate_all.html but like Ryan said, they&#39;ve been superseded. I am still learning across()!
-00:30:05    Ryan Woodbury:  Line 69 would be: mutate(across(q1:q10, as.numeric)) in the &quot;new&quot; format
-00:30:37    Alyssa Ibarra:  Thanks, Ryan! I didn&#39;t know it was changing
-00:30:49    Ryan Woodbury:  I was just getting used to the mutate_*() functions too!
-00:37:57    Alyssa Ibarra:  when would you use mutate versus transmute?
-00:38:35    Ryan Woodbury:  The issue with the psych::reverse.code() function that Yukie is talking about is that it is not tidyverse friendly, *but* is a function that is already made and does a great job. (I love the psych package, BTW.)
-00:45:41    Mark LaVenia:   I love that
-01:00:27    Ryan Woodbury:  Great advice on imagining the joined datasets.
-01:01:19    Isabella Velásquez: I&#39;ve got to hop off at 5. Thank you SO much Yukie! That was fantastic !
-01:01:39    Ryan Woodbury:  Thank you! Great work.
-01:02:58    Mark LaVenia:   Great job Yukie!
-01:03:00    Alyssa Ibarra:  Thank you so much! It was so great!
-01:03:09    Edgar Zamora:   Great job! Thank you!</code></pre>
-</details>
+<div id="walkthrough-5-text-analysis-with-social-media-data" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Walkthrough 5: Text Analysis With Social Media Data</h1>
+<p><strong>Learning objectives:</strong></p>
+<ul>
+<li>Understand how to retrieve data from Twitter</li>
+<li>Understand the robustness of Twitter data</li>
+<li>Learn basic principles of <strong>N</strong>atural <strong>L</strong>anguage <strong>P</strong>rocessing (NLP)</li>
+<li>Learn how to apply those principles to process social media data</li>
+<li>Learn how to use the <code>tidytext</code> package to analyze social media data</li>
+<li>Understand what a <em>sentiment analysis</em> is</li>
+<li>Learn how to perform a <em>sentiment analysis</em> on Twitter data</li>
+</ul>
 </div>
-</div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="slides-4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="walkthrough-2-approaching-gradebook-data-from-a-data-science-perspective.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="meeting-videos-7.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="slides-8.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

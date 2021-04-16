@@ -31,3 +31,7 @@ walkthrough-4-longitudinal-analysis-with-federal-students-with-disabilities-data
 slides-7
 meeting-videos-7
 cohort-1-7
+walkthrough-5-text-analysis-with-social-media-data
+slides-8
+meeting-videos-8
+cohort-1-8
