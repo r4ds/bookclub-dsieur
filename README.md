@@ -22,9 +22,9 @@ If you would like to present, please add your name next to a chapter using the [
 - 2021-03-31: Chapter 10. Walkthrough 4: Longitudinal Analysis With Federal Students With Disabilities Data: *Isabella Velásquez*
 - 2021-04-07: Chapter 11. Walkthrough 5: Text Analysis With Social Media Data: *Layla Bouzoubaa*
 - 2021-04-14: Chapter 12. Walkthrough 6: Exploring Relationships Using Social Network Analysis With Social Media Data: *Carlo Medina*
-- 2021-04-21: Chapter 13. Walkthrough 7: The Role (and Usefulness) of Multilevel Models: Presenter(s) *Mike Haugen*
+- 2021-04-21: Chapter 13. Walkthrough 7: The Role (and Usefulness) of Multilevel Models: *Mike Haugen*
 - **2021-04-28: Chapter 14. Walkthrough 8: Predicting Students’ Final Grades Using Machine Learning Methods with Online Course Data: *shamsuddeen***
-- 2021-05-05: Chapter 15. Introducing Data Science Tools To Your Education Job: Presenter(s) *Rob Lucas*
+- 2021-05-05: Chapter 15. Introducing Data Science Tools To Your Education Job: *Rob Lucas*
 - 2021-05-12: Chapter 16. Teaching Data Science: *Joshua Rosenberg*
 - 2021-05-19: Chapters 17 & 18. Learning More & Additional Resources: Presenter(s)
 - 2021-05-26: Chapter 19. Conclusion: Where to Next?: Presenter(s)
