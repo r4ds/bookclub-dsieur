@@ -42,6 +42,24 @@ all_files <- dataedu::all_files
 child_counts <- dataedu::child_counts
 ```
 
+```{r metathis, echo=FALSE}
+library(metathis)
+meta() %>%
+  meta_name("github-repo" = "ivelasq/") %>% 
+  meta_social(
+    title = "Longitudinal Analysis With Federal Students With Disabilities Data",
+    description = paste(
+      "Slides for R4DS Data Science in Education Bookclub"
+    ),
+    url = "https://github.com/r4ds/bookclub-dsieur",
+    og_type = "website",
+    og_author = "Isabella Velásquez",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@ivelasq",
+    twitter_site = "@ivelasq"
+  )
+```
+
 class: title-slide, left, bottom, inverse
 background-image: url(img/title.jpg)
 background-size: cover
@@ -993,4 +1011,4 @@ class: center, middle, inverse
 
 ----
 
-[An Introduction to xaringan for Presentations: The Basics and Beyond](https://spcanelon.github.io/xaringan-basics-and-beyond/#links) by Silvia Canelón
+[An Introduction to xaringan for Presentations: The Basics and Beyond](https://spcanelon.github.io/xaringan-basics-and-beyond/#links) by Dr. Silvia Canelón
