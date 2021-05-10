@@ -972,7 +972,7 @@ This chapter explores what aggregate data is, and how to access, clean, and expl
 
 ### Cohort 1
 
-TBD
+`r knitr::include_url("https://www.youtube.com/embed/yt0PNLeo80o")`
 
 <details>
   <summary> Meeting chat log </summary>
@@ -989,3 +989,147 @@ TBD
 01:04:35	Louis Carlo Medina:	thank you!!
 ```
 </details>
+
+
+# Walkthrough 6: Exploring Relationships Using Social Network Analysis With Social Media Data
+
+**Learning objectives:**
+
++
++
++
+
+## Slides
+
+`r knitr::include_url("./R/2021-04-14/walkthrough-6.html")`
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/pHcan7NOXRs")`
+
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:15:11	Ryan Woodbury:	I’m convinced!
+00:23:20	Isabella Velásquez:	I remember igraph <3
+00:32:57	Isabella Velásquez:	#rstats ?
+00:35:19	Ronak Patel:	Sorry guys, I have to hop off to deal with something. Thanks for the presentation Carlo! Gonna go research network graphs.
+00:35:35	Isabella Velásquez:	Does anybody have other packages for visualizing network graphs?
+00:37:00	Alyssa Ibarra:	I’ve used visNetwork a couple of years ago, but it was a one off project and I forgot it all. :(
+00:40:46	Ryan Woodbury:	I’m only slightly familiar with non-R software, Neo4j, which is a graph database and visualizing software.
+00:55:21	Alyssa Ibarra:	Nope. You pretty much covered it.
+00:56:28	Ryan Woodbury:	Great job, Carlo. Got to run.
+00:56:43	Alyssa Ibarra:	It was great! Thank you so much.
+```
+</details>
+
+
+
+# Walkthrough 7: The Role (and Usefulness) of Multilevel Models
+
+**Learning objectives:**
+
++
++
++
+
+## Slides
+
+`r knitr::include_url("./R/2021-04-21/walkthrough-7.html")`
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/mkw55WuyP9w")`
+
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:04:12	Mike Haugen:	Is there a particular way to share my screen. I have the slides in a browser?
+00:37:08	Ryan Woodbury:	Stroop task
+00:45:05	Isabella Velásquez:	are you able to run multilevel models in tidymodels?
+00:47:10	Edgar Zamora:	https://github.com/tidymodels/multilevelmod
+00:50:00	Alyssa Ibarra:	Sorry, laptop battery died.
+00:51:46	Alyssa Ibarra:	Thanks!
+00:51:59	Carlo Medina:	thank you!
+```
+</details>
+
+
+
+# Walkthrough 8: Predicting Students’ Final Grades Using Machine Learning Methods with Online Course Data
+
+**Learning objectives:**
+
++
++
++
+
+## Slides
+
+`r knitr::include_url("./R/2021-05-05/walkthrough-8.html")`
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/5fDoXCyDego")`
+
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:22:38	Rob Lucas (he/him):	Does anyone have any preferred resources on feature engineering?
+00:24:03	Carlo Medina:	I have not done modelling for quite a while. would love to hear resources too, if any.
+00:33:05	Mike Haugen:	Max Kuhn
+00:33:22	shamsuddeen:	http://www.feat.engineering
+00:33:57	Mike Haugen:	I am reading that book now, it is great because it goes beyond the software/code and explains the modeling process, stats a bit.
+00:39:13	Mike Haugen:	Max has a book on the caret package as well: http://topepo.github.io/caret/index.html
+00:39:36	Mike Haugen:	And tidy models: https://www.tmwr.org/
+00:40:20	Rob Lucas (he/him):	Wow, he is prolific. Thanks!
+00:43:28	Mike Haugen:	Julia Sigle’s video blog has a great example of using random forest with tidy models: https://juliasilge.com/blog/ikea-prices/
+00:43:31	shamsuddeen:	http://www.feat.engineering
+00:43:36	shamsuddeen:	http://appliedpredictivemodeling.com
+00:48:52	Mike Haugen:	Love variable importance; easy for others to understand.
+00:54:27	Carlo Medina:	thanks Shamsuddeen!
+00:54:30	Mike Haugen:	Thanks!
+```
+</details>
+
+
+
+<!-- #  : -->
+
+<!-- **Learning objectives:** -->
+
+<!-- + -->
+<!-- + -->
+<!-- + -->
+
+<!-- ## Slides -->
+
+<!-- `r knitr::include_url("./R/2021-0-/.html")` -->
+
+<!-- ## Meeting Videos -->
+
+<!-- ### Cohort 1 -->
+
+<!-- `r knitr::include_url("https://www.youtube.com/embed/")` -->
+
+
+<!-- <details> -->
+<!--   <summary> Meeting chat log </summary> -->
+
+<!-- ``` -->
+
+<!-- ``` -->
+<!-- </details> -->
+
