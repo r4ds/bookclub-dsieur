@@ -35,3 +35,15 @@ walkthrough-5-text-analysis-with-social-media-data
 slides-8
 meeting-videos-8
 cohort-1-8
+walkthrough-6-exploring-relationships-using-social-network-analysis-with-social-media-data
+slides-9
+meeting-videos-9
+cohort-1-9
+walkthrough-7-the-role-and-usefulness-of-multilevel-models
+slides-10
+meeting-videos-10
+cohort-1-10
+walkthrough-8-predicting-students-final-grades-using-machine-learning-methods-with-online-course-data
+slides-11
+meeting-videos-11
+cohort-1-11
