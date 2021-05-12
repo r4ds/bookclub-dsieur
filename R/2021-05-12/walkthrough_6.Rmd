@@ -1,0 +1,114 @@
+---
+title: " Teaching Data Science"
+subtitle: "<br/>Chapter 16"
+author: "Joshua Rosenberg"
+date: "`r format(Sys.time(), '%b %d, %Y')`"
+output:
+  xaringan::moon_reader:
+    # css: ["default", "metropolis", "metropolis-fonts"]
+    css: xaringan-themer.css
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      countIncrementalSlides: false
+      ratio: '16:9'
+---
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "#1c5253",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono")
+)
+```
+
+```{r setup, include=FALSE, warning=FALSE}
+knitr::opts_chunk$set(cache=TRUE)
+```
+
+class: middle
+
+# Learning Objectives
+
+1. Pedagogical features embedded within the book
+1. Teaching data science
+1. Overcoming barriers to doing data science
+
+---
+
+class: middle
+
+# But, before that
+
+## In response to the question, 'How should I get started doing data science'?
+
+### What would you recommend they do first, second, and third (subsequently) to get started?
+
+---
+
+# Pedagogical principles for the book
+
+- Problem-based learning
+  - Supporting learning around real-world challenges
+  - The _walkthroughs_ were designed with actual problems edu. data scientists face in mind
+- Differentiation
+  - Chapters 5 and 6 for those completely new to R
+  - Appendices as 'reaches'
+- Working in the open
+  - [R View blog post](https://rviews.rstudio.com/2020/07/01/open-source-authorship-of-data-science-in-education-using-r/)
+- Building mental models
+  - Foundational Skills Framework: Projects, functions, packages, data
+- Universal design
+  - Inclusive and accessible to all individuals
+  - Did not adequately address (based upon our aim)
+  
+---
+
+class: middle
+
+# What was helpful to you? 
+# What additional (helpful features could be added or created)?
+
+---
+
+# Strategies for teaching data science
+
+- Provide a home base
+  - Reduce some of the work that learners have to do that is unrelated to reasoning about and using code
+- Write code early and often
+  - Most everyone can learn to code; begin with reasoning about the output of code and writing code early
+- Don't touch that keyboard!
+  - Supporting learners to fix typos and become familiar with syntax is well-worth the effort
+- Anticipate issues (and sacrifice accuracy for clarity early on)
+  - The curse of knowledge is hard to overcome; be _generally_ accurate but emphasize being clear and pragmatic early on
+- Start with "early wins"
+  - It is important to consider the end point; what will learners _want_ to do or make?
+- Consider representation and inclusion
+  - Doing data science and working with data in education make these _even more_ important than in other domains in that we can make impressions upon learners about who does data science and what data we create 
+- Draw on other resources
+  - There are great resources in computing education and K-12 education to draw on
+
+---
+
+class: middle
+
+# What are other helpful teaching strategies?
+# How do these strategies look different with learners of different ages and in different contexts?
+
+---
+
+# What's next?
+
+- There is a lot of growth and interest in data science education
+- But, learning to do data science is still _really hard_!
+- **What are big gaps in resources?**
+
+--- 
+
+# Thank you!
+
+Joshua Rosenberg  
+jmrosenberg@utk.edu  
+@jrosenberg6432
