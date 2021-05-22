@@ -25,7 +25,7 @@ If you would like to present, please add your name next to a chapter using the [
 - 2021-04-21: Chapter 13. Walkthrough 7: The Role (and Usefulness) of Multilevel Models: *Mike Haugen*
 - 2021-04-28: CANCELLED
 - 2021-05-05: Chapter 14. Walkthrough 8: Predicting Students’ Final Grades Using Machine Learning Methods with Online Course Data: *shamsuddeen*
-- **2021-05-12: Chapter 16. Teaching Data Science: *Joshua Rosenberg***
+- 2021-05-12: Chapter 16. Teaching Data Science: *Joshua Rosenberg*
 - 2021-05-19: Chapter 15. Introducing Data Science Tools To Your Education Job: *Rob Lucas*
 - 2021-05-26: Chapters 17 & 18. Learning More & Additional Resources: Presenter(s)
 - 2021-06-02: Chapter 19. Conclusion: Where to Next?: Presenter(s)
