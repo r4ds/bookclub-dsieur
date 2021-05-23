@@ -122,7 +122,7 @@
 
 ## Slides
 
-- `r knitr::include_url("https://docs.google.com/presentation/d/1FhmztqUQQotG3tOXrq96mlaiFF4NfjXMpx43Q9mf8pQ/edit?usp=sharing")`
+`r knitr::include_url("https://docs.google.com/presentation/d/1FhmztqUQQotG3tOXrq96mlaiFF4NfjXMpx43Q9mf8pQ/edit?usp=sharing")`
 
 ## Meeting Videos
 
@@ -923,7 +923,7 @@ This chapter explores what aggregate data is, and how to access, clean, and expl
 
 ## Slides
 
-`r knitr::include_url("./R/2021-03-31/Walkthrough-4.html")`
+`r knitr::include_url("https://r4ds.github.io/bookclub-dsieur/R/2021-03-31/Walkthrough-4.html#1")`
 
 ## Meeting Videos
 
@@ -1104,7 +1104,176 @@ This chapter explores what aggregate data is, and how to access, clean, and expl
 ```
 </details>
 
+# Teaching Data Science
 
+**Learning objectives:**
+
+- Pedagogical features embedded within the book
+- Teaching data science
+- Overcoming barriers to doing data science
+
+## Slides
+
+`r knitr::include_url("./R/2021-05-12/walkthrough_6.html")`
+
+## Meeting Videos
+
+### Cohort 1
+
+TBD
+<!-- `r knitr::include_url("https://www.youtube.com/embed/")` -->
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:06:12	Joshua Rosenberg:	Hi everyone
+00:06:16	Joshua Rosenberg:	Just getting setup here
+00:39:06	Joshua Rosenberg:	Ty Ryan - glad to hear this.
+00:39:27	Joshua Rosenberg:	(Also welcome critique/additional features suggestions, of course)
+00:47:59	Isabella Velásquez:	yes, and dplyr 1.0! and a bunc of other updates :D
+00:55:23	Joshua Rosenberg:	If y'all want to take on just one of these two, that's fine - being aware of time here.
+00:57:41	Joshua Rosenberg:	Great suggestions from you both, I think
+```
+</details>
+
+<details>
+  <summary> Josh's Notes </summary>
+```
+# Discussion of Teaching Data Science
+
+## ways to get started
+
+- ID a problem/thing you want to do
+
+- learn a bit about possible functionality
+
+    - read a resource like r4ds
+
+- work on a particular problem
+
+- start with a narrow resource, like a chapter or a blog post
+
+- solicit feedback
+
+- find out what area/aspect of data science is most interesting to you, e.g. sports
+
+- twitter (#rstats!) can be a great way to pick up on the conversation/follow people who do data science
+
+- select a topic that can sustain motivation/interest early on
+
+- building some understanding about where/what data is
+
+- what is someone's vision/goals for becoming more data savvy
+
+- what are ways you're using analytics in your life?
+
+    - fitbit! (wearables/fitness trackers)
+
+    - social media analytics?
+
+    - tracking personal expenses?
+
+    - following sports?
+
+    - ...?
+
+- send examples that are similar in purpose/contents/context to what someone is hoping to do
+
+## pedagogical principles embedded in book
+
+- walkthroughs helpful for intermediate R user
+
+- Could pauses/chances for readers to engage in active thinking/application, instead of spoon feeding the next step be created?
+
+    - could the bookdown for dsieur-bookclub be a place such walkthroughs could "live"?
+
+- education is different/particular 
+
+- seeing similar data to data that one encounters in one's work has some benefits (relative to e.g. business data)
+
+- the topics are applicable to education
+
+- something that could be mentioned - data stored in forms other than CSVs/flat text files
+
+    - databases/AWS - through dplyr/dbplyr
+
+    - RStudio connections tab (aside, I [Josh] could never get this to work, but was able to use dbplyr fine)
+
+- so many things that we don't come back to in the text; there are so many features that RStudio is currently working on
+
+    - for beginning R users
+
+    - for continuity / expansion of the topic throughout the book
+
+- walkthroughs focus on accessing, preparing, creating products from analyses
+
+- what about the human aspects of data science?
+
+## teaching strategies
+
+- teaching PhD students who have mostly used SPSS, being very contextualized/focusing on a relevant data set can help
+
+- visualization is a great place to start
+
+- __instead of__ arguing for how access and R (or python or SPSS, etc.) are different, focus on showing how one can do things that one could do in other statistical software
+
+    - make the transition less abrupt
+
+- learn something, step away, and then forget! It would be good to have a systematic way to revisit concepts, like through flashcards - spaced practice, memory, other strategies; easy to let things to too long
+
+## resources
+
+- **meta-analysis** or review of when to do what
+
+    - what strategies are better for teaching what coding/DS concepts and skills?
+
+    - blocks work really well for certain skills/ideas, but not so well for others
+
+- gamification or robotics are common contexts for learning coding/CS
+
+    - but, there aren't resources like this for data science (and there aren't many examples of teaching data science outside of graduate-level courses)
+
+        - reframe CS activities around data science; could support students moving into data science and machine learning roles (and data-intensive roles in a variety of occupations)
+
+- data/data science can be accessible to anyone
+
+    - personal
+
+    - in various jobs - not just stem jobs
+
+    - breaking down misconceptions about what data scientists do/who they are could be a step that could make progress 
+
+
+```
+</details>
+
+# Introducing Data Science Tools To Your Education Job
+
+**Learning objectives:**
+
+TBD
+
+## Slides
+
+TBD
+
+## Meeting Videos
+
+### Cohort 1
+
+TBD
+
+<!-- `r knitr::include_url("https://www.youtube.com/embed/")` -->
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:30:48	Alyssa Ibarra:	Morgan: we have a survey inventory that the Deans annually review. Each with the calendar/date and frequency. Surveys have to be approved to have the 'letter head' or logo to be an official survey. Just wanted to offer the idea.
+00:58:23	Ryan Woodbury:	Got to run. Thanks for leading this discussion Rob!
+```
+</details>
 
 <!-- #  : -->
 
