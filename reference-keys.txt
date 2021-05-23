@@ -47,3 +47,11 @@ walkthrough-8-predicting-students-final-grades-using-machine-learning-methods-wi
 slides-11
 meeting-videos-11
 cohort-1-11
+teaching-data-science
+slides-12
+meeting-videos-12
+cohort-1-12
+introducing-data-science-tools-to-your-education-job
+slides-13
+meeting-videos-13
+cohort-1-13

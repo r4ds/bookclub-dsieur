@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Teaching Data Science</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Joshua Rosenberg" />
+    <meta name="date" content="2021-05-12" />
+    <script src="libs/header-attrs-2.6/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Teaching Data Science
+## <br/>Chapter 16
+### Joshua Rosenberg
+### May 12, 2021
+
+---
+
+
+
+
+
+
+class: middle
+
+# Learning Objectives
+
+1. Pedagogical features embedded within the book
+1. Teaching data science
+1. Overcoming barriers to doing data science
+
+---
+
+class: middle
+
+# But, before that
+
+## In response to the question, 'How should I get started doing data science'?
+
+### What would you recommend they do first, second, and third (subsequently) to get started?
+
+---
+
+# Pedagogical principles for the book
+
+- Problem-based learning
+  - Supporting learning around real-world challenges
+  - The _walkthroughs_ were designed with actual problems edu. data scientists face in mind
+- Differentiation
+  - Chapters 5 and 6 for those completely new to R
+  - Appendices as 'reaches'
+- Working in the open
+  - [R View blog post](https://rviews.rstudio.com/2020/07/01/open-source-authorship-of-data-science-in-education-using-r/)
+- Building mental models
+  - Foundational Skills Framework: Projects, functions, packages, data
+- Universal design
+  - Inclusive and accessible to all individuals
+  - Did not adequately address (based upon our aim)
+  
+---
+
+class: middle
+
+# What was helpful to you? 
+# What additional (helpful features could be added or created)?
+
+---
+
+# Strategies for teaching data science
+
+- Provide a home base
+  - Reduce some of the work that learners have to do that is unrelated to reasoning about and using code
+- Write code early and often
+  - Most everyone can learn to code; begin with reasoning about the output of code and writing code early
+- Don't touch that keyboard!
+  - Supporting learners to fix typos and become familiar with syntax is well-worth the effort
+- Anticipate issues (and sacrifice accuracy for clarity early on)
+  - The curse of knowledge is hard to overcome; be _generally_ accurate but emphasize being clear and pragmatic early on
+- Start with "early wins"
+  - It is important to consider the end point; what will learners _want_ to do or make?
+- Consider representation and inclusion
+  - Doing data science and working with data in education make these _even more_ important than in other domains in that we can make impressions upon learners about who does data science and what data we create 
+- Draw on other resources
+  - There are great resources in computing education and K-12 education to draw on
+
+---
+
+class: middle
+
+# What are other helpful teaching strategies?
+# How do these strategies look different with learners of different ages and in different contexts?
+
+---
+
+# What's next?
+
+- There is a lot of growth and interest in data science education
+- But, learning to do data science is still _really hard_!
+- **What are big gaps in resources?**
+
+--- 
+
+# Thank you!
+
+Joshua Rosenberg  
+jmrosenberg@utk.edu  
+@jrosenberg6432
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
