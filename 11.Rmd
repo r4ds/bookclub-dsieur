@@ -1,0 +1,26 @@
+# Walkthrough 7: The Role (and Usefulness) of Multilevel Models
+
+## Slides
+
+`r knitr::include_url("./R/2021-04-21/walkthrough-7.html")`
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/mkw55WuyP9w")`
+
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:04:12	Mike Haugen:	Is there a particular way to share my screen. I have the slides in a browser?
+00:37:08	Ryan Woodbury:	Stroop task
+00:45:05	Isabella Velásquez:	are you able to run multilevel models in tidymodels?
+00:47:10	Edgar Zamora:	https://github.com/tidymodels/multilevelmod
+00:50:00	Alyssa Ibarra:	Sorry, laptop battery died.
+00:51:46	Alyssa Ibarra:	Thanks!
+00:51:59	Carlo Medina:	thank you!
+```
+</details>

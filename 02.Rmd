@@ -1,0 +1,39 @@
+# What does Data Science in Education Look Like?
+
+**Learning objectives:**
+
+- TBD
+
+## Slides
+
+`r knitr::include_url("https://docs.google.com/presentation/d/1FhmztqUQQotG3tOXrq96mlaiFF4NfjXMpx43Q9mf8pQ/edit?usp=sharing")`
+
+## Meeting Videos
+
+### Cohort 1
+
+TBD
+`r knitr::include_url("https://www.youtube.com/embed/b1f_Jrxt-Mc")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:12:11	Rob Lucas:	PollEv.com/roblucas198
+00:14:20	Daniel Jin:	sorry have to step away for a moment!
+00:21:24	Marina:	I don't currently work in education so I'm going to skip this question (:
+00:32:17	Mark LaVenia:	data curation is a big part of my role
+00:32:41	Ronak Patel:	I have to hop off for a work call but will make sure to carve out an hour here on out. Thanks all!
+00:32:47	Alyssa Ibarra:	what is data curation? Sorry not familiar with the term
+00:34:00	Mark LaVenia:	@Alyssa - Finding data that teams need to answer a question, etc.
+00:34:16	Alyssa Ibarra:	Ah yes, thanks!
+00:39:58	Mark LaVenia:	data interrogation
+00:42:15	Mark LaVenia:	need to, but don't
+00:42:20	Ryan Woodbury:	same
+00:42:27	Marina:	^^^
+00:56:18	Marina:	I know this is an R-focused thing, but for basic/quick spatial analysis, I've really enjoyed using QGIS, which is more point and click
+00:57:41	Mark LaVenia:	thanks @Marina. Really trying to stretch into R and Python. Thanks for the tip on QGIS; will check that out
+01:02:57	Mark LaVenia:	+1
+01:03:52	Mark LaVenia:	Nicely done Rob
+```
+</details>
