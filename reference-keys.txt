@@ -55,3 +55,7 @@ introducing-data-science-tools-to-your-education-job
 slides-13
 meeting-videos-13
 cohort-1-13
+learning-more-additional-resources-and-conclusion-where-to-next
+slides-14
+meeting-videos-14
+cohort-1-14
