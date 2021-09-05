@@ -1,0 +1,29 @@
+# Walkthrough 6: Exploring Relationships Using Social Network Analysis With Social Media Data
+
+## Slides
+
+`r knitr::include_url("./R/2021-04-14/walkthrough-6.html")`
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/pHcan7NOXRs")`
+
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:15:11	Ryan Woodbury:	I’m convinced!
+00:23:20	Isabella Velásquez:	I remember igraph <3
+00:32:57	Isabella Velásquez:	#rstats ?
+00:35:19	Ronak Patel:	Sorry guys, I have to hop off to deal with something. Thanks for the presentation Carlo! Gonna go research network graphs.
+00:35:35	Isabella Velásquez:	Does anybody have other packages for visualizing network graphs?
+00:37:00	Alyssa Ibarra:	I’ve used visNetwork a couple of years ago, but it was a one off project and I forgot it all. :(
+00:40:46	Ryan Woodbury:	I’m only slightly familiar with non-R software, Neo4j, which is a graph database and visualizing software.
+00:55:21	Alyssa Ibarra:	Nope. You pretty much covered it.
+00:56:28	Ryan Woodbury:	Great job, Carlo. Got to run.
+00:56:43	Alyssa Ibarra:	It was great! Thank you so much.
+```
+</details>

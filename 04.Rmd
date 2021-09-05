@@ -1,0 +1,143 @@
+# Getting Started with R and RStudio & Foundational Skills
+
+**Learning objectives:**
+
+- Knitting ppt slides from Rmd
+- Writing function
+- Reading/nterpretting code
+- Avoiding/debugging typos
+- Piping `%>%` and convention preference `<-` vs `->`
+
+## Slides
+
+`r knitr::include_url("./R/dsieur_ch5n6.pptx")`
+
+<details>
+  <summary> Foundational Skills Script </summary>
+```  
+`# using the filter() function from the stats package  
+x <- 1:100  
+
+stats::filter(x, rep(1, 3))  
+
+`# using the filter() function from the dplyr package  
+starwars %>%   
+  dplyr::filter(mass > 85)
+
+dataedu::ma_data_init
+
+dataedu::ma_data_init -> ma_data
+
+ma_data_init <- dataedu::ma_data_init
+
+# you probably wrote these 3 library() lines in your R script file earlier
+# if you have not yet run them, you will need to run these three lines before running the rest of the chunk
+library(tidyverse)
+library(dataedu)
+library(skimr)
+library(janitor)
+
+# Exploring and manipulating your data
+names(ma_data_init)
+
+glimpse(ma_dat_init) 
+
+glimpse(ma_data_init)
+
+summary(ma_data_init)
+
+glimpse(ma_data_init$Town)
+
+summary(ma_data_init$Town)
+
+glimpse(ma_data_init$AP_Test Takers)
+
+glimpse(ma_data_init$`AP_Test Takers`)
+
+summary(ma_data_init$`AP_Test Takers`)
+
+
+ma_data_init %>% 
+  group_by(District Name) %>%  
+  count()
+
+ma_data_init %>% 
+  group_by(`District Name`) %>% 
+  count()  
+
+ma_data_init %>% 
+  group_by(`District Name`) %>% 
+  count() %>% 
+  filter(n > 10)
+
+ma_data_init %>% 
+  group_by(`District Name`) %>% 
+  count() %>% 
+  filter(n > 10) %>% 
+  arrange()
+```
+</details>
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/QzctSsk2ok0")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:06:21    Layla Bouzoubaa:    Hello everyone
+00:06:47    Catherine Miller:   Hello!
+00:07:29    Mark LaVenia:   Hi everyone
+00:13:40    Ronak Patel:    3 minutes in and I've already learned something new!
+00:13:51    Daniel Jin: +1
+00:13:51    Morgan Grovenburg:  Me too!
+00:14:53    Ryan Woodbury:  It looks way better in the book down compared to Google Slides
+00:14:56    Carlo M:    reproducibility
+00:16:17    Catherine Miller:   thanks, that was helpful
+00:17:25    Mike Haugen:    The R markdown chapter in R4DS goes over benefits: https://r4ds.had.co.nz/r-markdown.html
+00:22:30    shamsuddeen:    New approach for installing packages: https://github.com/r-lib/pak
+00:26:20    Ryan Woodbury:  YES!!! I just used it!
+00:26:36    Carlo M:    Syntactic sugar of ifelse(is.na(certification), certification_1, certification)
+00:27:04    Marina: ^^ yeah, I had been using ifelse, but this looks neater
+00:27:05    Ryan Woodbury:  Trying to combine cohort data where each cohort has different variable names.
+00:30:42    Alyssa Ibarra:  According to Help, coalesce is from dplyr
+00:30:55    Layla Bouzoubaa:    janitor
+00:30:59    shamsuddeen:    coalesce is from dplyr?
+00:31:09    Layla Bouzoubaa:    janitor::remove_empty()
+00:31:14    shamsuddeen:    Oh yah, I see it
+00:31:25    Carlo M:    Yup, coalesce is dplyr
+00:37:22    Layla Bouzoubaa:    If you do in the ?stats::filter console, it is for time series data
+00:37:32    Layla Bouzoubaa:    He’s correct
+00:37:43    Alyssa Ibarra:  Thanks for that clarification!
+00:39:55    Morgan Grovenburg:  Always <-
+00:40:00    Mike Haugen:    ^^
+00:40:14    Ronak Patel:    -> gives me anxiety
+00:40:28    Carlo M:    When I get lazy, I end up using `->`
+00:40:43    Morgan Grovenburg:  My reason is to keep = straight
+00:40:48    Isabella Velásquez:    same! I only use -> when I don’t want to scroll all the way to the beginning of a pipe XD
+00:40:54    Layla Bouzoubaa:    Second Ronan’s point
+00:41:01    Layla Bouzoubaa:    ronak*
+00:42:53    Isabella Velásquez:    I once spent a lot of time before realizing I used ‘ instead of `
+00:46:40    Carlo M:    Morgan is right. The {stats} library would get masked when library(dplyr) is called
+00:50:07    shamsuddeen:    Happy Git with R is a good book on learning Gihub: https://happygitwithr.com
+00:52:56    Layla Bouzoubaa:    Sorry everyone I need to hop off. Cheers!
+00:53:01    Mike Haugen:    How do you get a branch?
+00:54:53    Alyssa Ibarra:  ^ same question
+00:56:29    Catherine Miller:   Thank you Mark :)
+00:56:31    Marina: This discussion is giving me scary git flashbacks
+00:56:39    Catherine Miller:   githell, right?
+00:57:20    Marina: ^^^
+00:58:53    Carlo M:    You’re doing great!!
+00:59:16    Catherine Miller:   I always get lost here, too.
+01:02:06    Isabella Velásquez:    I always create a branch by clicking the button next to main in R Studio
+01:03:48    Ronak Patel:    I gotta hop off for another meeting. Thanks, Mark. Great job today! See ya'll next week.
+01:03:49    Catherine Miller:   Thank you!!
+01:04:18    Catherine Miller:   Thank you for being brave and helping us learn, Mark!!
+01:04:20    shamsuddeen:    Thanks
+01:04:24    Alyssa Ibarra:  Thank you!
+01:04:37    Carlo M:    Thanks Mark!
+```
+</details>

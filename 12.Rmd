@@ -1,0 +1,32 @@
+# Walkthrough 8: Predicting Students’ Final Grades Using Machine Learning Methods with Online Course Data
+
+## Slides
+
+`r knitr::include_url("./R/2021-05-05/walkthrough-8.html")`
+
+## Meeting Videos
+
+### Cohort 1
+
+`r knitr::include_url("https://www.youtube.com/embed/5fDoXCyDego")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:22:38	Rob Lucas (he/him):	Does anyone have any preferred resources on feature engineering?
+00:24:03	Carlo Medina:	I have not done modelling for quite a while. would love to hear resources too, if any.
+00:33:05	Mike Haugen:	Max Kuhn
+00:33:22	shamsuddeen:	http://www.feat.engineering
+00:33:57	Mike Haugen:	I am reading that book now, it is great because it goes beyond the software/code and explains the modeling process, stats a bit.
+00:39:13	Mike Haugen:	Max has a book on the caret package as well: http://topepo.github.io/caret/index.html
+00:39:36	Mike Haugen:	And tidy models: https://www.tmwr.org/
+00:40:20	Rob Lucas (he/him):	Wow, he is prolific. Thanks!
+00:43:28	Mike Haugen:	Julia Sigle’s video blog has a great example of using random forest with tidy models: https://juliasilge.com/blog/ikea-prices/
+00:43:31	shamsuddeen:	http://www.feat.engineering
+00:43:36	shamsuddeen:	http://appliedpredictivemodeling.com
+00:48:52	Mike Haugen:	Love variable importance; easy for others to understand.
+00:54:27	Carlo Medina:	thanks Shamsuddeen!
+00:54:30	Mike Haugen:	Thanks!
+```
+</details>

@@ -1,0 +1,47 @@
+# Learning More, Additional Resources, and Conclusion: Where to Next?
+
+**Learning objectives:**
+
+TBD
+
+## Slides
+
+TBD
+
+## Meeting Videos
+
+### Cohort 1
+
+TBD
+
+`r knitr::include_url("https://www.youtube.com/embed/mVWfEiaiPiQ")`
+
+<details>
+  <summary> Meeting chat log </summary>
+  
+```
+00:22:49	Edgar Zamora:	https://bookdown.org
+00:24:37	Ryan Woodbury:	https://www.bigbookofr.com/
+00:25:21	Morgan Grovenburg:	I have 24 R-related bookmarks
+00:27:21	Morgan Grovenburg:	And 17 on my reading list
+00:27:37	Isabella Velásquez:	https://www.meetup.com/
+00:30:30	Isabella Velásquez:	personal blog + twitter + r-bloggers :) very occasionally dataisbeautiful on reddit
+00:32:29	Mike Haugen:	The Power of Great Datasets by Alex Cookson
+00:32:34	Mike Haugen:	https://www.rstudio.com/resources/rstudioglobal-2021/the-power-of-great-datasets/
+00:32:39	Ryan Woodbury:	^^ Thank you
+00:44:37	Morgan Grovenburg:	I also want to learn how to scrape websites
+00:45:14	Isabella Velásquez:	I'm happy to work on scraping websites with you!
+00:45:38	Ryan Woodbury:	I’ll mute...
+00:46:01	Isabella Velásquez:	here's an example that I did for the Super Smash Brothers wiki I did :) https://gist.github.com/ivelasq/68bc67c446aae0fe738fd0d723529e42
+00:46:49	Isabella Velásquez:	+1 Edgar
+00:48:51	Ryan Woodbury:	I’ve heard flexdashboard is an alternative to Shiny
+00:49:25	Rob Lucas (he/him):	I saw this recommended alongside the selector gadget, as a slightly gamified way of practicing with CSS selectors: https://flukeout.github.io/
+00:50:39	Morgan Grovenburg:	Also if anyone knows anything about curricular analytics
+00:51:28	Rob Lucas (he/him):	Morgan, is that Jon Harmon's area?
+00:51:45	Morgan Grovenburg:	I have no idea
+00:52:33	Rob Lucas (he/him):	He is a content data scientist at Macmillan Learning. I think that might be related?
+00:53:03	Mike Haugen:	May be a text analysis question
+00:55:37	Isabella Velásquez:	+1 Morgan ! that has been my experience as well.
+01:05:18	Isabella Velásquez:	love that idea!
+```
+</details>
